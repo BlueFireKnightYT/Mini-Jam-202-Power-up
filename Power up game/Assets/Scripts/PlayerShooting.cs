@@ -25,7 +25,7 @@ public class PlayerShooting : MonoBehaviour
         {
             neededTime -= Time.deltaTime;
         }
-        else if(neededTime <= 0 && canShoot = false)
+        else if(neededTime <= 0 && canShoot == false)
         {
             canShoot = true;
         }
