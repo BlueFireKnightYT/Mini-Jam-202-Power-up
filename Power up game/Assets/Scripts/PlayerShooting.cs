@@ -14,14 +14,18 @@ public class PlayerShooting : MonoBehaviour
         if(context.performed && canShoot == true)
         {
             canShoot = false;
-            neededTime = Time.time + cooldown;
+            neededTime = cooldown;
             Instantiate(bulletPrefab, transform.position, transform.rotation);
         }
     }
 
     private void Update()
     {
-        if (neededTime > Time.time)
+        if (neededTime > 0)
+        {
+            neededTime -= Time.deltaTime;
+        }
+        else if(neededTime <= 0)
         {
             canShoot = true;
         }
