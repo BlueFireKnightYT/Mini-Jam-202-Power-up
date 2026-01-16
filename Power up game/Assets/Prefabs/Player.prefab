@@ -365,6 +365,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e3ab1890-9070-4103-a766-a50d11b5aae6
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3688112732473469382}
+        m_TargetAssemblyTypeName: HpSystem, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 626c5401-54c1-4703-bda5-ba3a116e775b
+    m_ActionName: 'Player/Upgrade[/Keyboard/t]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -382,6 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82936fa442dadc4395d7aa358e34e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
+  hpSys: {fileID: 3688112732473469382}
   speed: 5
   cardRotate: {fileID: 7667207627187913509}
 --- !u!114 &2310889213408456459
@@ -396,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db066f0a4cbe27b45a44d7920977ecf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
+  hpSys: {fileID: 3688112732473469382}
   bulletPrefab: {fileID: 8379585933943714111, guid: 01e38c131271ede41ac7c203f781a991, type: 3}
   cooldown: 0.5
   cardPos: {fileID: 4014313607069082508}
@@ -445,7 +463,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8218242e589ca4c839c5ca3adf3e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  maxHp: 100
   neededHp: 75
+  inMenu: 0
 --- !u!1 &8972882340141010562
 GameObject:
   m_ObjectHideFlags: 0

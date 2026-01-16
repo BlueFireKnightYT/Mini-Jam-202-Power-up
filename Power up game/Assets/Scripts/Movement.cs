@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    public HpSystem hpSys;
+
+
     Rigidbody2D rb;
 
     Vector2 input;
@@ -23,10 +26,11 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         rb.AddForce(input * speed);
-
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());
-        cardRotate.up = mousePos - new Vector2(transform.position.x, transform.position.y);
-
+        if (hpSys.inMenu == false)
+        { 
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());
+            cardRotate.up = mousePos - new Vector2(transform.position.x, transform.position.y);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)

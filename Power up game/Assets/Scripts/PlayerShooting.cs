@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
 {
+    public HpSystem hpSys;
+
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float cooldown;
     public Transform cardPos;
@@ -14,7 +16,7 @@ public class PlayerShooting : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && hpSys.inMenu == false)
         {
             shooting = true;
         }
