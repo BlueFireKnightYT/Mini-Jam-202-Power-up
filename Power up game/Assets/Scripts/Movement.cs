@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
 
     Vector2 input;
     public float speed = 5f;
+    public Transform cardRotate;
 
     InputAction lookAt;
     PlayerInput pi;
@@ -24,7 +25,7 @@ public class Movement : MonoBehaviour
         rb.AddForce(input * speed);
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());
-        transform.up = mousePos - new Vector2(transform.position.x, transform.position.y);
+        cardRotate.up = mousePos - new Vector2(transform.position.x, transform.position.y);
 
     }
 

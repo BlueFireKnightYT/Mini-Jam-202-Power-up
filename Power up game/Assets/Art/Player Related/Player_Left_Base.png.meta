@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 031eef16232479c47a3263297fe1f945
+guid: 82a1dcc9f45c0804a9056af7fe51f087
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6695825672997519808
-    second: ShootingCard_0
+      213: 1962928013840023843
+    second: Player_Left_Base_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShootingCard_0
+      name: Player_Left_Base_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 9
-        height: 14
+        width: 12
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c145fc39f95cec50800000000000000
-      internalID: 6695825672997519808
+      spriteID: 3210998e0a8bd3b10800000000000000
+      internalID: 1962928013840023843
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ShootingCard_0: 6695825672997519808
+      Player_Left_Base_0: 1962928013840023843
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

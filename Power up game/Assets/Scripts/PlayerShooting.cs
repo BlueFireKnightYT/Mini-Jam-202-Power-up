@@ -6,6 +6,7 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float cooldown;
+    public Transform cardPos;
 
     float neededTime;
     bool canShoot = true;
@@ -29,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
         {
             canShoot = false;
             neededTime = cooldown;
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
         }
 
 
