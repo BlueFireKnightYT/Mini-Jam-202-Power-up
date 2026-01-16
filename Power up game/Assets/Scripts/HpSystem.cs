@@ -8,6 +8,13 @@ public class HpSystem : MonoBehaviour
     public int neededHp = 75;
     public bool inMenu = false;
 
+    public GameObject upgradeMenu;
+
+    private void Start()
+    {
+        upgradeMenu.SetActive(false);
+    }
+
     private void Update()
     {
         if (hp < maxHp)
@@ -27,12 +34,15 @@ public class HpSystem : MonoBehaviour
             Time.timeScale = 0;
             inMenu = true;
             // menu met 3 choices
-            //menu sluiten en time door zetten
+            upgradeMenu.SetActive(true);
+            
         }
         else if(context.performed && inMenu == true)
         {
+            //menu sluiten en time door zetten
             Time.timeScale = 1;
             inMenu = false;
+            upgradeMenu.SetActive(false);
         }
     }
 }
