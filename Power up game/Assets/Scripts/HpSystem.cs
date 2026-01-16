@@ -20,6 +20,7 @@ public class HpSystem : MonoBehaviour
         if (hp < maxHp)
         { 
             hp++;
+            Debug.Log(hp);
         }
     }
 

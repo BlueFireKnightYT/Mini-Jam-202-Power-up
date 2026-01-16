@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Rigidbody2D bulletRb;
-    [SerializeField] float bulletSpeed = 10;
+    [SerializeField] float bulletSpeed = 10f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
