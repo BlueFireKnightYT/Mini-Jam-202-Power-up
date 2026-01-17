@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 031eef16232479c47a3263297fe1f945, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,6 +109,8 @@ GameObject:
   - component: {fileID: 1993844278842132305}
   - component: {fileID: 4103710954707284811}
   - component: {fileID: 3688112732473469382}
+  - component: {fileID: 7825700251934368570}
+  - component: {fileID: 3109790425041623733}
   m_Layer: 0
   m_Name: Player
   m_TagString: player
@@ -381,6 +383,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 626c5401-54c1-4703-bda5-ba3a116e775b
     m_ActionName: 'Player/Upgrade[/Keyboard/t]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3109790425041623733}
+        m_TargetAssemblyTypeName: PowerUpActivator, Assembly-CSharp
+        m_MethodName: PowerUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f0295e4d-beb3-4d40-964d-6459f15e0c9d
+    m_ActionName: 'Player/PowerUp[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -399,6 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   hpSys: {fileID: 3688112732473469382}
+  baseSpeed: 0
   speed: 5
   cardRotate: {fileID: 7667207627187913509}
 --- !u!114 &2310889213408456459
@@ -415,8 +434,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   hpSys: {fileID: 3688112732473469382}
   bulletPrefab: {fileID: 8379585933943714111, guid: 01e38c131271ede41ac7c203f781a991, type: 3}
-  cooldown: 0.5
+  cooldown: 1
+  baseCooldown: 0
   cardPos: {fileID: 4014313607069082508}
+  damage: 40
+  baseDamage: 0
+  lifestealAmount: 5
+  baseLifestealAmount: 0
+  cardAmount: 1
+  baseCardAmount: 0
+  pierceAmount: 1
+  basePierceAmount: 0
 --- !u!95 &1993844278842132305
 Animator:
   serializedVersion: 7
@@ -463,9 +491,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8218242e589ca4c839c5ca3adf3e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  hp: 100
   maxHp: 100
+  shield: 0
+  maxShield: 0
   neededHp: 75
   inMenu: 0
+  hpSlider: {fileID: 0}
+  shieldSlider: {fileID: 0}
+  upgradeMenu: {fileID: 0}
+--- !u!114 &7825700251934368570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5269077499305534381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0532610ed576d47a4dc90e660b163a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  xpCount: 0
+  xpLevel: 0
+  xpLevelAmount: 100
+  slider: {fileID: 0}
+  levelText: {fileID: 0}
+--- !u!114 &3109790425041623733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5269077499305534381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7787d96933eb693489b0a07b60e56585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpActivator
+  powerUpDuration: 5
+  playerObj: {fileID: 5269077499305534381}
+  poweredSpeed: 0
+  poweredDamage: 0
+  poweredLifesteal: 0
+  poweredCooldown: 0
+  realCooldown: 0
+  poweredCardAmount: 0
+  poweredPierceAmount: 0
 --- !u!1 &8972882340141010562
 GameObject:
   m_ObjectHideFlags: 0

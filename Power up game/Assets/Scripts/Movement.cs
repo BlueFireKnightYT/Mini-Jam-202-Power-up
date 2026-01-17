@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     Vector2 input;
+    public float baseSpeed;
     public float speed = 5f;
     public Transform cardRotate;
 
@@ -17,6 +18,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+        baseSpeed = speed;
         rb = GetComponent<Rigidbody2D>();
         pi = GetComponent<PlayerInput>();
         lookAt = pi.actions.FindAction("LookAt");
@@ -24,10 +26,10 @@ public class Movement : MonoBehaviour
     }
 
     private void Update()
-    {
-        rb.AddForce(input * speed);
+    {  
         if (hpSys.inMenu == false)
-        { 
+        {
+            rb.AddForce(input * speed);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());
             cardRotate.up = mousePos - new Vector2(transform.position.x, transform.position.y);
         }

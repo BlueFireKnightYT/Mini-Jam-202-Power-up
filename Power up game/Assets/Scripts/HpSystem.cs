@@ -1,34 +1,47 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class HpSystem : MonoBehaviour
 {
-    int hp = 100;
+    public int hp = 100;
     public int maxHp = 100;
+    public int shield;
+    public int maxShield;
     public int neededHp = 75;
     public bool inMenu = false;
+    public Slider hpSlider;
+    public Slider shieldSlider;
 
     public GameObject upgradeMenu;
+
+    LevelSystem levelSys;
+    int levelNeeded;
 
     private void Start()
     {
         upgradeMenu.SetActive(false);
+        levelSys = GetComponent<LevelSystem>();
+        levelNeeded = 1;
     }
 
     private void Update()
     {
-        if (hp < maxHp)
-        { 
-            hp++;
-            Debug.Log(hp);
+        hpSlider.value = hp;
+        hpSlider.maxValue = maxHp;
+        shieldSlider.value = shield;
+        shieldSlider.maxValue = maxShield;
+
+        if(hp > maxHp)
+        {
+            hp = maxHp;
         }
     }
 
     public void Upgrade(InputAction.CallbackContext context)
     {
-        if (context.performed && hp > neededHp && inMenu == false)
+        if (context.performed && levelSys.xpLevel >= levelNeeded && inMenu == false)
         {
-            hp -= neededHp;
             Debug.Log("Upgrade");
 
             //time stop
@@ -36,6 +49,7 @@ public class HpSystem : MonoBehaviour
             inMenu = true;
             // menu met 3 choices
             upgradeMenu.SetActive(true);
+            levelNeeded++;
             
         }
         else if(context.performed && inMenu == true)

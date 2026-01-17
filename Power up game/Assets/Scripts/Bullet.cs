@@ -4,16 +4,39 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody2D bulletRb;
     [SerializeField] float bulletSpeed = 10f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    PlayerShooting playerShooting;
+    GameObject playerObj;
+    int shotPierceAmount;
+
     void Start()
     {
         bulletRb = GetComponent<Rigidbody2D>();
         Destroy(this.gameObject, 5);
+        playerObj = GameObject.FindGameObjectWithTag("player");
+        playerShooting = playerObj.GetComponent<PlayerShooting>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         bulletRb.linearVelocity = transform.up * bulletSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            EnemyBehaviour enemyScript = collision.gameObject.GetComponent<EnemyBehaviour>();
+            enemyScript.enemyHealth -= playerShooting.damage;
+            playerShooting.DoLifesteal();
+        }
+
+        if(collision.gameObject.tag != "card")
+        {
+            shotPierceAmount++;
+            if (shotPierceAmount >= playerShooting.pierceAmount)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
