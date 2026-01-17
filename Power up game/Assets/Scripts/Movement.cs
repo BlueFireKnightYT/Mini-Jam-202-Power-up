@@ -39,4 +39,12 @@ public class Movement : MonoBehaviour
     {
         input = context.ReadValue<Vector2>();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("joker") == true)
+        {
+
+        }
+    }
 }

@@ -12,6 +12,9 @@ public class EnemyBehaviour : MonoBehaviour
     public float iFrames;
     public float enemyBaseHealth;
     public float enemyHealth;
+    public GameObject jokerCardPrefab;
+    public int treasureChance;
+    public bool canMove;
 
     private void Start()
     {
@@ -21,11 +24,18 @@ public class EnemyBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         hpSys = playerObj.GetComponent<HpSystem>();
         levelSys = playerObj.GetComponent<LevelSystem>();
+        treasureChance = Random.Range(0, 50);
+        canMove = true;
     }
     private void Update()
     {
         if (enemyHealth <= 0)
         {
+            if(treasureChance == 0)
+            {
+                Instantiate(jokerCardPrefab, transform.position, Quaternion.identity);
+                print("lol");
+            }
             levelSys.xpCount += 10;
             Destroy(this.gameObject);
         }
@@ -33,8 +43,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerVector = transform.position - playerObj.transform.position;
-        rb.linearVelocity = (-playerVector.normalized * enemySpeed);
+        if (canMove)
+        {
+            playerVector = transform.position - playerObj.transform.position;
+            rb.linearVelocity = (-playerVector.normalized * enemySpeed);
+        }
+        else return;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -63,4 +77,5 @@ public class EnemyBehaviour : MonoBehaviour
     {
         canHit = true;
     }
+
 }

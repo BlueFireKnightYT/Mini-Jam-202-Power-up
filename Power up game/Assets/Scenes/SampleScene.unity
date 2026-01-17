@@ -1739,6 +1739,63 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &7120767275404987489
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.71877
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07089
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855722553615316078, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501478320161422883, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
+      propertyPath: m_Name
+      value: JokerCard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5784022851d03a247a7b8b42eb9dbee3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1749,3 +1806,4 @@ SceneRoots:
   - {fileID: 1425419201}
   - {fileID: 737847009}
   - {fileID: 1662620784}
+  - {fileID: 7120767275404987489}
