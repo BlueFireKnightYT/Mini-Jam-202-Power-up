@@ -385,7 +385,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Upgrade[/Keyboard/t]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3109790425041623733}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PowerUpActivator, Assembly-CSharp
         m_MethodName: PowerUp
         m_Mode: 0

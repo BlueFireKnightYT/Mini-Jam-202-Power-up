@@ -49,8 +49,8 @@ public class HpSystem : MonoBehaviour
             inMenu = true;
             // menu met 3 choices
             upgradeMenu.SetActive(true);
-            levelNeeded++;
-            
+            levelSys.xpLevel = -1;;
+
         }
         else if(context.performed && inMenu == true)
         {
