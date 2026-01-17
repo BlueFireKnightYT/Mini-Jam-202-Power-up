@@ -43,9 +43,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
+        playerVector = transform.position - playerObj.transform.position;
         if (canMove)
         {
-            playerVector = transform.position - playerObj.transform.position;
             rb.linearVelocity = (-playerVector.normalized * enemySpeed);
         }
         else return;
