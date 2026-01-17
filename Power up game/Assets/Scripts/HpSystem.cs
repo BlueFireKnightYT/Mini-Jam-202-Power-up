@@ -38,8 +38,10 @@ public class HpSystem : MonoBehaviour
         }
     }
 
+    
     public void Upgrade(InputAction.CallbackContext context)
     {
+        // Open upgrade Menu
         if (context.performed && levelSys.xpLevel >= levelNeeded && inMenu == false)
         {
             Debug.Log("Upgrade");
@@ -49,10 +51,11 @@ public class HpSystem : MonoBehaviour
             inMenu = true;
             // menu met 3 choices
             upgradeMenu.SetActive(true);
-            levelSys.xpLevel = -1;;
+            levelSys.xpLevel -= 1;;
 
         }
-        else if(context.performed && inMenu == true)
+        // Sluit upgrade Menu
+        else if (context.performed && inMenu == true)
         {
             //menu sluiten en time door zetten
             Time.timeScale = 1;

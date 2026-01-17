@@ -1,7 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Windows;
-
 public class EnemyBehaviour : MonoBehaviour
 {
     GameObject playerObj;
@@ -9,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
     LevelSystem levelSys;
     Rigidbody2D rb;
     public float enemySpeed;
+    public int enemyDamage;
     Vector2 playerVector;
     bool canHit;
     public float iFrames;
@@ -28,8 +26,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (enemyHealth <= 0)
         {
-            Destroy(this.gameObject);
             levelSys.xpCount += 10;
+            Destroy(this.gameObject);
         }
     }
 
@@ -47,11 +45,11 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 if(hpSys.shield > 0)
                 {
-                    hpSys.shield -= 10;
+                    hpSys.shield -= enemyDamage;
                 }
                 else
                 {
-                    hpSys.hp -= 10;
+                    hpSys.hp -= enemyDamage;
                 } 
                 canHit = false;
                 Invoke("HitCooldown", iFrames);

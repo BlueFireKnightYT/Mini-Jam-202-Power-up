@@ -16,9 +16,8 @@ public class LevelSystem : MonoBehaviour
         {
             xpLevel++;
             xpCount = 0;
+            xpLevelAmount = xpLevelAmount / 100 * 110;
         }
-        xpLevelAmount = xpLevelAmount / 100 * 110;
-
         slider.maxValue = xpLevelAmount;
         slider.value = xpCount;
         levelText.text = (xpLevel.ToString());
