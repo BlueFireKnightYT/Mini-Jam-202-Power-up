@@ -182,7 +182,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -467307283419413426, guid: bdc843cd12d43c34991fbee0e83a4b4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -585,6 +585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemy: {fileID: 8974456285381197933, guid: fcb5002c7d1e6194dae1c91eeae2fc4e, type: 3}
   baseNeededTime: 5
+  cam: {fileID: 0}
 --- !u!1 &8972882340141010562
 GameObject:
   m_ObjectHideFlags: 0
