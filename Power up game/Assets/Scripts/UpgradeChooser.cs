@@ -75,7 +75,7 @@ public class UpgradeChooser : MonoBehaviour
     {
         if (upgradeSlot == 0)
         {
-            pUA.poweredSpeed += 2;
+            pUA.poweredSpeed++;
         }
         else if (upgradeSlot == 1)
         {
@@ -83,7 +83,7 @@ public class UpgradeChooser : MonoBehaviour
         }
         else if (upgradeSlot == 2)
         {
-            pUA.poweredCardAmount += 1;
+            pUA.poweredCardAmount++;
         }
         else if (upgradeSlot == 3)
         {
@@ -91,7 +91,7 @@ public class UpgradeChooser : MonoBehaviour
         }
         else if (upgradeSlot == 4)
         {
-            pUA.poweredLifesteal += 3;
+            pUA.poweredLifesteal++;
         }
         else if (upgradeSlot == 5)
         {
@@ -99,11 +99,11 @@ public class UpgradeChooser : MonoBehaviour
         }
         else if (upgradeSlot == 6)
         {
-                pUA.poweredCooldown += 0.2f;
+            pUA.poweredCooldown += 0.2f;
         }
         else if (upgradeSlot == 7)
         {
-            pUA.poweredPierceAmount += 1;
+            pUA.poweredPierceAmount ++;
         }
         hpSys.inMenu = false;
         Time.timeScale = 1;

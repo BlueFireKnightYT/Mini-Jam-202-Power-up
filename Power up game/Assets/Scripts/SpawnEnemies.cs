@@ -65,7 +65,7 @@ public class SpawnEnemies : MonoBehaviour
                 }
                 else if (chance > 80)
                 {
-                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-10, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
+                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-10, -10), camPosY + Random.Range(6, 10)), Quaternion.identity);
                 }
                 spawnedEnemies++;
                 enemySpawnRateIncrease(spawnedEnemies);
@@ -103,7 +103,7 @@ public class SpawnEnemies : MonoBehaviour
                 }
                 else if (chance > 80)
                 {
-                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
+                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-10, -6)), Quaternion.identity);
                 }
                 spawnedEnemies++;
                 enemySpawnRateIncrease(spawnedEnemies);

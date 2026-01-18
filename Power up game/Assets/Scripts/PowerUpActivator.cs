@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PowerUpActivator : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PowerUpActivator : MonoBehaviour
     bool powerUpActive;
     public  float powerUpDuration;
     public GameObject playerObj;
+    public Image UIPowered;
     HpSystem hpSys;
     public float poweredSpeed;
     public float poweredDamage;
@@ -15,7 +17,6 @@ public class PowerUpActivator : MonoBehaviour
     public float realCooldown;
     public int poweredCardAmount;
     public int poweredPierceAmount;
-    float cooldownCount;
     Movement moveScript;
     PlayerShooting shootScript;
 
@@ -24,15 +25,16 @@ public class PowerUpActivator : MonoBehaviour
         hpSys = playerObj.GetComponent<HpSystem>();
         moveScript = GetComponent<Movement>();
         shootScript = GetComponent<PlayerShooting>();
+
+        UIPowered.color = Color.grey;
     }
 
     private void Update()
     {
-        if(hpSys.hp >= hpSys.neededHp)
+        if(hpSys.hp > hpSys.neededHp)
         {
             ableToPowerUp = true;
         }
-        cooldownCount = poweredCooldown * 2;
         if (poweredCooldown > 0) 
         {
             realCooldown = 0.2f + poweredCooldown / 4 ;
@@ -49,7 +51,7 @@ public class PowerUpActivator : MonoBehaviour
             ableToPowerUp = false;
             powerUpActive = true;
             hpSys.shield = hpSys.maxShield;
-            hpSys.hp -= (hpSys.neededHp -1);
+            hpSys.hp -= (hpSys.neededHp);
             moveScript.speed += poweredSpeed;
             shootScript.damage += poweredDamage;
             shootScript.lifestealAmount += poweredLifesteal;
@@ -57,6 +59,7 @@ public class PowerUpActivator : MonoBehaviour
             shootScript.cardAmount += poweredCardAmount;
             shootScript.pierceAmount += poweredPierceAmount;
             Invoke("StopPowerUp", powerUpDuration);
+            UIPowered.color = Color.yellow;
         }
     }
 
@@ -70,7 +73,7 @@ public class PowerUpActivator : MonoBehaviour
         shootScript.cardAmount = shootScript.baseCardAmount;
         shootScript.pierceAmount = shootScript.basePierceAmount;
         hpSys.shield = 0;
-
+        UIPowered.color = Color.grey;
     }
 
 }

@@ -11,7 +11,7 @@ public class EnemyBullet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, 2.5f);
         player = GameObject.FindGameObjectWithTag("player");
         hpSys = player.GetComponent<HpSystem>();
         eBulletRb = GetComponent<Rigidbody2D>();
