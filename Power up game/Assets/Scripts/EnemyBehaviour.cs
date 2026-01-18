@@ -24,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         hpSys = playerObj.GetComponent<HpSystem>();
         levelSys = playerObj.GetComponent<LevelSystem>();
-        treasureChance = Random.Range(0, 50);
+        treasureChance = Random.Range(0, 0);
         canMove = true;
     }
     private void Update()
@@ -34,7 +34,6 @@ public class EnemyBehaviour : MonoBehaviour
             if(treasureChance == 0)
             {
                 Instantiate(jokerCardPrefab, transform.position, Quaternion.identity);
-                print("lol");
             }
             levelSys.xpCount += 10;
             Destroy(this.gameObject);
