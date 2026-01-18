@@ -29,6 +29,7 @@ public class PlayerShooting : MonoBehaviour
         baseLifestealAmount = lifestealAmount;
         baseCooldown = cooldown;
         baseCardAmount = cardAmount;
+        basePierceAmount = pierceAmount;
     }
     public void Shoot(InputAction.CallbackContext context)
     {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HpSystem : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class HpSystem : MonoBehaviour
         if(hp > maxHp)
         {
             hp = maxHp;
+        }
+        if(hp <= 0)
+        {
+            SceneManager.LoadScene("DeathScene");
         }
     }
 

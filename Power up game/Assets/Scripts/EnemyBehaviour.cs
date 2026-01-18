@@ -24,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         hpSys = playerObj.GetComponent<HpSystem>();
         levelSys = playerObj.GetComponent<LevelSystem>();
-        treasureChance = Random.Range(0, 0);
+        treasureChance = Random.Range(0, 51);
         canMove = true;
     }
     private void Update()

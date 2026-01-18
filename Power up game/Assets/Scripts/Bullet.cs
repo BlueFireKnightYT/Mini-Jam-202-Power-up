@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         playerShooting = playerObj.GetComponent<PlayerShooting>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         bulletRb.linearVelocity = transform.up * bulletSpeed;
     }

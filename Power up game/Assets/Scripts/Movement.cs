@@ -27,11 +27,11 @@ public class Movement : MonoBehaviour
         
     }
 
-    private void Update()
+    private void FixedUpdate()
     {  
         if (hpSys.inMenu == false)
         {
-            rb.AddForce(input * speed);
+            rb.AddForce(input * speed * 5);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());
             cardRotate.up = mousePos - new Vector2(transform.position.x, transform.position.y);
         }
