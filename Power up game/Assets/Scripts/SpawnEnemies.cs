@@ -34,111 +34,82 @@ public class SpawnEnemies : MonoBehaviour
             //right
             if(side == 1)
             { 
-                if (chance <= 80)
+                if (chance < 80)
                 { 
                     Instantiate(enemy, new Vector2(camPosX + Random.Range(10, 15), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
-                else if (chance > 80)
+                else if (chance >= 80)
                 {
                     Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(10, 15), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
                 spawnedEnemies++;
-                if (spawnedEnemies % 5 == 0)
-                {
-
-                    if (baseNeededTime > 0.8)
-                    {
-                        neededTime = baseNeededTime / 100 * 95;
-                    }
-                    else if (baseNeededTime <= .8)
-                    {
-                        baseNeededTime = 0.8f;
-                    }
-                }
+                enemySpawnRateIncrease(spawnedEnemies);
+                
                 neededTime = baseNeededTime;
             }
             //up
             else if (side == 2)
             {
-                if (chance <= 80)
+                if (chance < 80)
                 {
                     Instantiate(enemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(6, 10)), Quaternion.identity);
                 }
-                else if (chance > 80)
+                else if (chance >= 80)
                 {
                     Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(6, 10)), Quaternion.identity);
                 }
                 spawnedEnemies++;
-                if (spawnedEnemies % 5 == 0)
-                {
-
-                    if (baseNeededTime > 0.8)
-                    {
-                        neededTime = baseNeededTime / 100 * 95;
-                    }
-                    else if (baseNeededTime <= .8)
-                    {
-                        baseNeededTime = 0.8f;
-                    }
-                }
+                enemySpawnRateIncrease(spawnedEnemies);
                 neededTime = baseNeededTime;
             }
             //left
             else if (side == 3)
             {
-                if (chance <= 80)
+                if (chance < 80)
                 {
                     Instantiate(enemy, new Vector2(camPosX + Random.Range(-15, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
-                else if (chance > 80)
+                else if (chance >= 80)
                 {
                     Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-15, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
                 spawnedEnemies++;
-                if (spawnedEnemies % 5 == 0)
-                {
-
-                    if (baseNeededTime > 0.8)
-                    {
-                        neededTime = baseNeededTime / 100 * 95;
-                    }
-                    else if (baseNeededTime <= .8)
-                    {
-                        baseNeededTime = 0.8f;
-                    }
-                }
+                enemySpawnRateIncrease(spawnedEnemies);
                 neededTime = baseNeededTime;
             }
             //down
             else if (side == 4)
             {
-                if (chance <= 80)
+                if (chance < 80)
                 {
                     Instantiate(enemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-10, -6)), Quaternion.identity);
                 }
-                else if (chance > 80)
+                else if (chance >= 80)
                 {
                     Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-10, -6)), Quaternion.identity);
                 }
                 spawnedEnemies++;
-                if (spawnedEnemies % 5 == 0)
-                {
-
-                    if (baseNeededTime > 0.8)
-                    {
-                        baseNeededTime = baseNeededTime / 100 * 95;
-                    }
-                    else if (baseNeededTime <= .8)
-                    {
-                        baseNeededTime = 0.8f;
-                    }
-                }
+                enemySpawnRateIncrease(spawnedEnemies);
                 neededTime = baseNeededTime;
 
             }
-            
+        }
+    }
 
+    void enemySpawnRateIncrease(int spawnedEnemies)
+    {
+        if (spawnedEnemies % 5 == 0)
+        {
 
+            if (baseNeededTime > 0.8)
+            {
+                baseNeededTime = baseNeededTime / 100 * 95;
+                Debug.Log(baseNeededTime);
+            }
+            else if (baseNeededTime <= .8)
+            {
+                baseNeededTime = 0.8f;
+            }
         }
     }
 }
