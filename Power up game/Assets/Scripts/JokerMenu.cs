@@ -14,6 +14,7 @@ public class JokerMenu : MonoBehaviour
     [SerializeField] Image c1Img;
     [SerializeField] Image c2Img;
     [SerializeField] Image c3Img;
+    [SerializeField] Image baseCardImg;
 
     [SerializeField] Sprite speedUpCard;
     [SerializeField] Sprite dmgUpCard;
@@ -166,5 +167,6 @@ public class JokerMenu : MonoBehaviour
         hpSys.inMenu = false;
         Time.timeScale = 1;
         this.gameObject.SetActive(false);
+        hasChosen = false;
     }
 }
