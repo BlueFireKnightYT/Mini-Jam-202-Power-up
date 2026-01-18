@@ -421,6 +421,7 @@ MonoBehaviour:
   baseSpeed: 0
   speed: 5
   cardRotate: {fileID: 7667207627187913509}
+  jokerMenu: {fileID: 0}
 --- !u!114 &2310889213408456459
 MonoBehaviour:
   m_ObjectHideFlags: 0

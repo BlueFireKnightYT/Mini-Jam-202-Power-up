@@ -7,6 +7,7 @@ TagManager:
   - card
   - player
   - enemy
+  - joker
   layers:
   - Default
   - TransparentFX

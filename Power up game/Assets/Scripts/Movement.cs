@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     public float baseSpeed;
     public float speed = 5f;
     public Transform cardRotate;
+    public GameObject jokerMenu;
 
     InputAction lookAt;
     PlayerInput pi;
@@ -22,6 +23,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         pi = GetComponent<PlayerInput>();
         lookAt = pi.actions.FindAction("LookAt");
+        jokerMenu.SetActive(false);
         
     }
 
@@ -44,7 +46,9 @@ public class Movement : MonoBehaviour
     {
         if (collision.CompareTag("joker") == true)
         {
-
+            jokerMenu.SetActive(true);
+            Destroy(collision.gameObject);
+            Time.timeScale = 0f;
         }
     }
 }
