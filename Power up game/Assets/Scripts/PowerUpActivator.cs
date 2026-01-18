@@ -71,6 +71,8 @@ public class PowerUpActivator : MonoBehaviour
         shootScript.cooldown = shootScript.baseCooldown;
         shootScript.cardAmount = shootScript.baseCardAmount;
         shootScript.pierceAmount = shootScript.basePierceAmount;
+        hpSys.shield = 0;
+
     }
 
 }
