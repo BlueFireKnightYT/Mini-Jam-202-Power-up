@@ -4,6 +4,7 @@ public class SpawnEnemies : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject shootingEnemy;
+    public GameObject dashingEnemy;
 
     public float baseNeededTime = 2;
     float neededTime = 2f;
@@ -34,15 +35,19 @@ public class SpawnEnemies : MonoBehaviour
             //right
             if(side == 1)
             { 
-                if (chance < 80)
+                if (chance < 60)
                 { 
                     Instantiate(enemy, new Vector2(camPosX + Random.Range(10, 15), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
-                else if (chance >= 80)
+                else if (chance > 60 && chance < 80)
                 {
                     Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(10, 15), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
-                spawnedEnemies++;
+                else if (chance > 80)
+                {
+                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(10, 15), camPosY + Random.Range(-7, 7)), Quaternion.identity);
+                }
+                    spawnedEnemies++;
                 enemySpawnRateIncrease(spawnedEnemies);
                 
                 neededTime = baseNeededTime;
@@ -50,13 +55,17 @@ public class SpawnEnemies : MonoBehaviour
             //up
             else if (side == 2)
             {
-                if (chance < 80)
+                if (chance < 60)
                 {
                     Instantiate(enemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(6, 10)), Quaternion.identity);
                 }
-                else if (chance >= 80)
+                else if (chance > 60 && chance < 80)
                 {
                     Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(6, 10)), Quaternion.identity);
+                }
+                else if (chance > 80)
+                {
+                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-10, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
                 spawnedEnemies++;
                 enemySpawnRateIncrease(spawnedEnemies);
@@ -65,13 +74,17 @@ public class SpawnEnemies : MonoBehaviour
             //left
             else if (side == 3)
             {
-                if (chance < 80)
+                if (chance < 60)
                 {
                     Instantiate(enemy, new Vector2(camPosX + Random.Range(-15, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
-                else if (chance >= 80)
+                else if (chance > 60 && chance < 80)
                 {
                     Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-15, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
+                }
+                else if (chance > 80)
+                {
+                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-15, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
                 spawnedEnemies++;
                 enemySpawnRateIncrease(spawnedEnemies);
@@ -80,13 +93,17 @@ public class SpawnEnemies : MonoBehaviour
             //down
             else if (side == 4)
             {
-                if (chance < 80)
+                if (chance < 60)
                 {
                     Instantiate(enemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-10, -6)), Quaternion.identity);
                 }
-                else if (chance >= 80)
+                else if (chance > 60 && chance < 80)
                 {
                     Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-10, -6)), Quaternion.identity);
+                }
+                else if (chance > 80)
+                {
+                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
                 }
                 spawnedEnemies++;
                 enemySpawnRateIncrease(spawnedEnemies);
@@ -103,12 +120,12 @@ public class SpawnEnemies : MonoBehaviour
 
             if (baseNeededTime > 0.8)
             {
-                baseNeededTime = baseNeededTime / 100 * 95;
+                baseNeededTime = baseNeededTime / 100 * 90;
                 Debug.Log(baseNeededTime);
             }
-            else if (baseNeededTime <= .8)
+            else if (baseNeededTime <= .5)
             {
-                baseNeededTime = 0.8f;
+                baseNeededTime = 0.5f;
             }
         }
     }

@@ -36,11 +36,9 @@ public class PowerUpActivator : MonoBehaviour
         if (poweredCooldown > 0) 
         {
             realCooldown = 0.2f + poweredCooldown / 4 ;
-            print("yoohoo");
         }
         else
         {
-            print("not yoohoo");
             realCooldown = poweredCooldown;
         }
     }
