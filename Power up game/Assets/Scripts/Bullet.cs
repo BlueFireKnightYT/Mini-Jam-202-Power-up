@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         bulletRb = GetComponent<Rigidbody2D>();
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, 2);
         playerObj = GameObject.FindGameObjectWithTag("player");
         playerShooting = playerObj.GetComponent<PlayerShooting>();
     }

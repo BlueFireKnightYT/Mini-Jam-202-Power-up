@@ -405,7 +405,7 @@ MonoBehaviour:
   cardPos: {fileID: 4014313607069082508}
   damage: 40
   baseDamage: 0
-  lifestealAmount: 5
+  lifestealAmount: 2
   baseLifestealAmount: 0
   cardAmount: 1
   baseCardAmount: 0
@@ -587,6 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemy: {fileID: 8974456285381197933, guid: fcb5002c7d1e6194dae1c91eeae2fc4e, type: 3}
   shootingEnemy: {fileID: 860412203463663464, guid: edd498c35182a07499e2c47828836700, type: 3}
+  dashingEnemy: {fileID: 3267639721472912695, guid: c8e1682cf1c599e44b9057f5ea0bb706, type: 3}
   baseNeededTime: 5
   cam: {fileID: 0}
 --- !u!1 &8972882340141010562
