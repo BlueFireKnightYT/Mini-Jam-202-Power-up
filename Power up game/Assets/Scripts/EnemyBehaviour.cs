@@ -44,11 +44,14 @@ public class EnemyBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         playerVector = transform.position - playerObj.transform.position;
-        if (canMove)
+        if (canMove == true)
         {
             rb.linearVelocity = (-playerVector.normalized * enemySpeed);
         }
-        else return;
+        else
+        {
+            rb.linearVelocity = new Vector2(0, 0);
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
