@@ -30,17 +30,24 @@ public class EnemyDasher : MonoBehaviour
         {
             if (!hasDashed)
             {
-                rb.AddForce(-playerVector.normalized * dashForce, ForceMode2D.Impulse);
+                rb.linearVelocity = Vector2.zero;
                 hasDashed = true;
-                eB.enabled = false;
-                Invoke("DoDashCooldown", dashCooldown);
+                eB.dashing = true;
+                eB.canMove = false;
+                Invoke("DoDash", 1f);
             }
         }
     }
 
+    void DoDash()
+    {
+        rb.AddForce(-playerVector.normalized * dashForce, ForceMode2D.Impulse);
+        Invoke("DoDashCooldown", dashCooldown);
+    }
     void DoDashCooldown()
     {
         hasDashed = false;
-        eB.enabled = true;
+        eB.canMove = true;
+        eB.dashing = false;
     }
 }

@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject jokerCardPrefab;
     public int treasureChance;
     public bool canMove;
+    public bool dashing;
 
     private void Start()
     {
@@ -49,7 +50,10 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            rb.linearVelocity = new Vector2(0, 0);
+            if (!dashing)
+            {
+                rb.linearVelocity = new Vector2(0, 0);
+            }
         }
     }
 

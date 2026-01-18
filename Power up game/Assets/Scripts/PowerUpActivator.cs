@@ -49,7 +49,7 @@ public class PowerUpActivator : MonoBehaviour
             ableToPowerUp = false;
             powerUpActive = true;
             hpSys.shield = hpSys.maxShield;
-            hpSys.hp -= hpSys.neededHp;
+            hpSys.hp -= (hpSys.neededHp -1);
             moveScript.speed += poweredSpeed;
             shootScript.damage += poweredDamage;
             shootScript.lifestealAmount += poweredLifesteal;
