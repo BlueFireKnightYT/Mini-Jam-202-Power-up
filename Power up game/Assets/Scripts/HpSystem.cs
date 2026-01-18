@@ -44,8 +44,6 @@ public class HpSystem : MonoBehaviour
         // Open upgrade Menu
         if (context.performed && levelSys.xpLevel >= levelNeeded && inMenu == false)
         {
-            Debug.Log("Upgrade");
-
             //time stop
             Time.timeScale = 0;
             inMenu = true;

@@ -585,6 +585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   enemy: {fileID: 8974456285381197933, guid: fcb5002c7d1e6194dae1c91eeae2fc4e, type: 3}
+  shootingEnemy: {fileID: 860412203463663464, guid: edd498c35182a07499e2c47828836700, type: 3}
   baseNeededTime: 5
   cam: {fileID: 0}
 --- !u!1 &8972882340141010562

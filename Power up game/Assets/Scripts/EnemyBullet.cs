@@ -28,6 +28,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.CompareTag("player"))
         {
             hpSys.hp -= dmg;
+            Destroy(this.gameObject);
         }
     }
 }

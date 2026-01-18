@@ -105,7 +105,6 @@ public class UpgradeChooser : MonoBehaviour
         {
             pUA.poweredPierceAmount += 1;
         }
-            Debug.Log(upgradeSlot);
         hpSys.inMenu = false;
         Time.timeScale = 1;
         this.gameObject.SetActive(false);

@@ -27,8 +27,6 @@ public class EnemyShooting : MonoBehaviour
             if (eB.canMove)
             { 
                 eB.canMove = false;
-                
-                Debug.Log("false");
             }
 
             if (neededTime > 0)
@@ -46,7 +44,6 @@ public class EnemyShooting : MonoBehaviour
             if (eB.canMove == false)
             {
                 eB.canMove = true;
-                Debug.Log("true");
             }
         }
     }

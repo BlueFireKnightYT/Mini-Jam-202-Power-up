@@ -28,10 +28,6 @@ public class Bullet : MonoBehaviour
             EnemyBehaviour enemyScript = collision.gameObject.GetComponent<EnemyBehaviour>();
             enemyScript.enemyHealth -= playerShooting.damage;
             playerShooting.DoLifesteal();
-        }
-
-        if(collision.gameObject.tag != "card")
-        {
             shotPierceAmount++;
             if (shotPierceAmount >= playerShooting.pierceAmount)
             {

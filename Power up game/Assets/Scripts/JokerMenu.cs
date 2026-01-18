@@ -121,8 +121,6 @@ public class JokerMenu : MonoBehaviour
             pShoot.pierceAmount += 1;
             pShoot.basePierceAmount += 1;
         }
-            Debug.Log(upgradeSlot);
-        
     }
 
     void SetUpgradeImg(Image targetImage, int upgradeSlot)
