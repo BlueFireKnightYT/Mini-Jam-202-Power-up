@@ -11,10 +11,12 @@ public class HpSystem : MonoBehaviour
     public int maxShield;
     public int neededHp = 75;
     public bool inMenu = false;
+    public bool inPauseMenu = false;
     public Slider hpSlider;
     public Slider shieldSlider;
 
     public GameObject upgradeMenu;
+    public GameObject pauseMenu;
 
     LevelSystem levelSys;
     int levelNeeded;
@@ -22,6 +24,7 @@ public class HpSystem : MonoBehaviour
     private void Start()
     {
         upgradeMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         levelSys = GetComponent<LevelSystem>();
         levelNeeded = 1;
     }
@@ -64,6 +67,27 @@ public class HpSystem : MonoBehaviour
             Time.timeScale = 1;
             inMenu = false;
             upgradeMenu.SetActive(false);
+        }
+    }
+
+    public void PauseGame(InputAction.CallbackContext context)
+    {
+        // Open upgrade Menu
+        if (context.performed && inPauseMenu == false)
+        {
+            //time stop
+            Time.timeScale = 0;
+            inPauseMenu = true;
+            pauseMenu.SetActive(true);
+
+        }
+        // Sluit upgrade Menu
+        else if (context.performed && inPauseMenu == true)
+        {
+            //menu sluiten en time door zetten
+            Time.timeScale = 1;
+            inPauseMenu = false;
+            pauseMenu.SetActive(false);
         }
     }
 }

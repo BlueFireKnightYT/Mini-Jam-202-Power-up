@@ -5,6 +5,14 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject tutorialChecker;
     public GameObject normalButtons;
+    HpSystem hpSys;
+    GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("player");
+        hpSys = player.GetComponent<HpSystem>();
+    }
     public void CheckTutorial()
     {
         tutorialChecker.SetActive(true);
@@ -22,5 +30,11 @@ public class MainMenu : MonoBehaviour
     public void StopGame()
     {
         Application.Quit();
+    }
+    public void ContinueGame()
+    {
+        Time.timeScale = 1;
+        hpSys.inPauseMenu = false;
+        hpSys.pauseMenu.SetActive(false);
     }
 }

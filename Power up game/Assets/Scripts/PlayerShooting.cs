@@ -33,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed && hpSys.inMenu == false)
+        if (context.performed && (hpSys.inMenu == false || hpSys.inPauseMenu == false))
         {
             shooting = true;
         }

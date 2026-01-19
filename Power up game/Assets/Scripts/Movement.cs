@@ -5,7 +5,6 @@ public class Movement : MonoBehaviour
 {
     public HpSystem hpSys;
 
-
     Rigidbody2D rb;
 
     Vector2 input;
@@ -41,6 +40,8 @@ public class Movement : MonoBehaviour
     {
         input = context.ReadValue<Vector2>();
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
