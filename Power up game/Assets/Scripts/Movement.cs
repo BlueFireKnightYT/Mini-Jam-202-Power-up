@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
         {
             rb.AddForce(input * speed * 5);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());
-            cardRotate.up = mousePos - new Vector2(transform.position.x, transform.position.y);
+            cardRotate.up = mousePos - Vector2.zero;
         }
     }
 
