@@ -6,8 +6,8 @@ public class SpawnEnemies : MonoBehaviour
     public GameObject shootingEnemy;
     public GameObject dashingEnemy;
 
-    public float baseNeededTime = 2;
-    float neededTime = 2f;
+    public float baseNeededTime = 5;
+    float neededTime = 5f;
     int spawnedEnemies = 0;
     int side = 1;
     public GameObject cam;
@@ -120,7 +120,7 @@ public class SpawnEnemies : MonoBehaviour
 
             if (baseNeededTime > 0.8)
             {
-                baseNeededTime = baseNeededTime / 100 * 90;
+                baseNeededTime = baseNeededTime / 100 * 95;
                 Debug.Log(baseNeededTime);
             }
             else if (baseNeededTime <= .5)
