@@ -106,7 +106,6 @@ public class JokerMenu : MonoBehaviour
         else if (upgradeSlot == 4)
         {
             pShoot.lifestealAmount += 5;
-            pShoot.baseLifestealAmount += 5;
         }
         else if (upgradeSlot == 5)
         {

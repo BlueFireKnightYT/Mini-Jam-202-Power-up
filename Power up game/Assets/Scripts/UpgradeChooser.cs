@@ -18,13 +18,12 @@ public class UpgradeChooser : MonoBehaviour
     [SerializeField] Sprite dmgUpCard;
     [SerializeField] Sprite extraCard;
     [SerializeField] Sprite hpUpCard;
-    [SerializeField] Sprite lifeStealCard;
     [SerializeField] Sprite timeUpCard;
     [SerializeField] Sprite attackSpeedUpCard;
     [SerializeField] Sprite pierceUpCard;
 
 
-    string[] upgrades = { "speedUp", "dmgUp", "extraCard", "hpUp", "lifeStealUp", "timeUp", "attackSpeedUp", "pierceUp" };
+    string[] upgrades = { "speedUp", "dmgUp", "extraCard", "hpUp", "timeUp", "attackSpeedUp", "pierceUp" };
     int c1;
     int c2;
     int c3;
@@ -89,17 +88,13 @@ public class UpgradeChooser : MonoBehaviour
         }
         else if (upgradeSlot == 4)
         {
-            pUA.poweredLifesteal++;
+            pUA.powerUpDuration++;
         }
         else if (upgradeSlot == 5)
         {
-            pUA.powerUpDuration++;
-        }
-        else if (upgradeSlot == 6)
-        {
             pUA.poweredCooldown += 0.2f;
         }
-        else if (upgradeSlot == 7)
+        else if (upgradeSlot == 6)
         {
             pUA.poweredPierceAmount ++;
         }
@@ -129,17 +124,13 @@ public class UpgradeChooser : MonoBehaviour
         }
         else if (upgradeSlot == 4)
         {
-            targetImage.sprite = lifeStealCard;
+            targetImage.sprite = timeUpCard;
         }
         else if (upgradeSlot == 5)
         {
-            targetImage.sprite = timeUpCard;
-        }
-        else if (upgradeSlot == 6)
-        {
             targetImage.sprite = attackSpeedUpCard;
         }
-        else if (upgradeSlot == 7)
+        else if (upgradeSlot == 6)
         {
             targetImage.sprite = pierceUpCard;
         }

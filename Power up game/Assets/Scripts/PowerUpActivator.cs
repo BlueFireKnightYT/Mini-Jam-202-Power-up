@@ -12,7 +12,6 @@ public class PowerUpActivator : MonoBehaviour
     HpSystem hpSys;
     public float poweredSpeed;
     public float poweredDamage;
-    public int poweredLifesteal;
     public float poweredCooldown;
     public float realCooldown;
     public int poweredCardAmount;
@@ -54,7 +53,6 @@ public class PowerUpActivator : MonoBehaviour
             hpSys.hp -= (hpSys.neededHp);
             moveScript.speed += poweredSpeed;
             shootScript.damage += poweredDamage;
-            shootScript.lifestealAmount += poweredLifesteal;
             shootScript.cooldown -= realCooldown;
             shootScript.cardAmount += poweredCardAmount;
             shootScript.pierceAmount += poweredPierceAmount;
@@ -68,7 +66,6 @@ public class PowerUpActivator : MonoBehaviour
         powerUpActive = false;
         moveScript.speed = moveScript.baseSpeed;
         shootScript.damage = shootScript.baseDamage;
-        shootScript.lifestealAmount = shootScript.baseLifestealAmount;
         shootScript.cooldown = shootScript.baseCooldown;
         shootScript.cardAmount = shootScript.baseCardAmount;
         shootScript.pierceAmount = shootScript.basePierceAmount;

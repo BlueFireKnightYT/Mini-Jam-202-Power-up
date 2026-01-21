@@ -16,7 +16,6 @@ public class PlayerShooting : MonoBehaviour
     public float damage;
     public float baseDamage;
     public int lifestealAmount;
-    public int baseLifestealAmount;
     public int cardAmount;
     private int shotCardAmount;
     public int baseCardAmount;
@@ -26,7 +25,6 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         baseDamage = damage;
-        baseLifestealAmount = lifestealAmount;
         baseCooldown = cooldown;
         baseCardAmount = cardAmount;
         basePierceAmount = pierceAmount;

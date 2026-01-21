@@ -35,7 +35,6 @@ public class HpSystem : MonoBehaviour
         hpSlider.maxValue = maxHp;
         shieldSlider.value = shield;
         shieldSlider.maxValue = maxShield;
-
         if(hp > maxHp)
         {
             hp = maxHp;
