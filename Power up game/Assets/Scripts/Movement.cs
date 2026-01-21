@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {  
-        if (hpSys.inMenu == false)
+        if (hpSys.inMenu == false || hpSys.inPauseMenu == false)
         {
             rb.AddForce(input * speed * 5);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());

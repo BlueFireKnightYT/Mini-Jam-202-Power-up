@@ -29,8 +29,6 @@ public class UpgradeChooser : MonoBehaviour
     int c2;
     int c3;
 
-    int sUPercent;
-
     private void OnEnable()
     {
         card1 = Random.Range(0, upgrades.Length);

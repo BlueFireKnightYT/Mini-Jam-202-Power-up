@@ -364,6 +364,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f0295e4d-beb3-4d40-964d-6459f15e0c9d
     m_ActionName: 'Player/PowerUp[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3688112732473469382}
+        m_TargetAssemblyTypeName: HpSystem, Assembly-CSharp
+        m_MethodName: PauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c48d066b-ed27-472a-80f8-9c432f2470d8
+    m_ActionName: 'Player/OpenPauseMenu[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -463,9 +479,11 @@ MonoBehaviour:
   maxShield: 0
   neededHp: 75
   inMenu: 0
+  inPauseMenu: 0
   hpSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
   upgradeMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!114 &7825700251934368570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,7 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   xpCount: 0
   xpLevel: 0
-  xpLevelAmount: 100
+  xpLevelAmount: 75
   slider: {fileID: 0}
   levelText: {fileID: 0}
 --- !u!114 &3109790425041623733
@@ -497,6 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpActivator
   powerUpDuration: 5
   playerObj: {fileID: 5269077499305534381}
+  UIPowered: {fileID: 0}
   poweredSpeed: 0
   poweredDamage: 0
   poweredLifesteal: 0
