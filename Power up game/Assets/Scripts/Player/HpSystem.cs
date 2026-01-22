@@ -20,6 +20,7 @@ public class HpSystem : MonoBehaviour
     private void Start()
     {
         pauseMenu.SetActive(false);
+        Time.timeScale = 0;
     }
 
     private void Update()
