@@ -34,15 +34,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Upgrade",
-                    "type": "Button",
-                    "id": "626c5401-54c1-4703-bda5-ba3a116e775b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "PowerUp",
                     "type": "Button",
                     "id": "f0295e4d-beb3-4d40-964d-6459f15e0c9d",
@@ -145,17 +136,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "LookAt",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "71bdcdd2-6d4c-4ae8-9041-1217de7c7da0",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Upgrade",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -10,23 +10,16 @@ public class HpSystem : MonoBehaviour
     public int shield;
     public int maxShield;
     public int neededHp = 75;
-    public bool inMenu = false;
     public bool inPauseMenu = false;
     public Slider hpSlider;
     public Slider shieldSlider;
 
-    public GameObject upgradeMenu;
     public GameObject pauseMenu;
 
-    LevelSystem levelSys;
-    int levelNeeded;
 
     private void Start()
     {
-        upgradeMenu.SetActive(false);
         pauseMenu.SetActive(false);
-        levelSys = GetComponent<LevelSystem>();
-        levelNeeded = 1;
     }
 
     private void Update()
@@ -44,43 +37,16 @@ public class HpSystem : MonoBehaviour
             SceneManager.LoadScene("DeathScene");
         }
     }
-
-    
-    public void Upgrade(InputAction.CallbackContext context)
-    {
-        // Open upgrade Menu
-        if (context.performed && levelSys.xpLevel >= levelNeeded && inMenu == false)
-        {
-            //time stop
-            Time.timeScale = 0;
-            inMenu = true;
-            // menu met 3 choices
-            upgradeMenu.SetActive(true);
-            levelSys.xpLevel -= 1;;
-
-        }
-        // Sluit upgrade Menu
-        else if (context.performed && inMenu == true)
-        {
-            //menu sluiten en time door zetten
-            Time.timeScale = 1;
-            inMenu = false;
-            upgradeMenu.SetActive(false);
-        }
-    }
-
     public void PauseGame(InputAction.CallbackContext context)
     {
-        // Open upgrade Menu
         if (context.performed && inPauseMenu == false)
         {
-            //time stop
+            // open pause menu en time stop
             Time.timeScale = 0;
             inPauseMenu = true;
             pauseMenu.SetActive(true);
 
         }
-        // Sluit upgrade Menu
         else if (context.performed && inPauseMenu == true)
         {
             //menu sluiten en time door zetten

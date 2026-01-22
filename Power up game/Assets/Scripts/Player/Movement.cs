@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public HpSystem hpSys;
+    LevelSystem lvlSys;
 
     Rigidbody2D rb;
 
@@ -14,21 +15,22 @@ public class Movement : MonoBehaviour
     public GameObject jokerMenu;
 
     InputAction lookAt;
-    PlayerInput pi;
+    PlayerInput PlayerInput;
 
     private void Start()
     {
         baseSpeed = speed;
         rb = GetComponent<Rigidbody2D>();
-        pi = GetComponent<PlayerInput>();
-        lookAt = pi.actions.FindAction("LookAt");
+        PlayerInput = GetComponent<PlayerInput>();
+        lvlSys = GetComponent<LevelSystem>();
+        lookAt = PlayerInput.actions.FindAction("LookAt");
         jokerMenu.SetActive(false);
         
     }
 
     private void FixedUpdate()
     {  
-        if (hpSys.inMenu == false || hpSys.inPauseMenu == false)
+        if (lvlSys.inMenu == false || hpSys.inPauseMenu == false)
         {
             rb.AddForce(input * speed * 5);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());

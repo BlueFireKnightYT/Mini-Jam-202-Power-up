@@ -459,6 +459,10 @@ PrefabInstance:
       value: WeaponPos
       objectReference: {fileID: 0}
     - target: {fileID: 2310889213408456459, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: lvlSys
+      value: 
+      objectReference: {fileID: 1118882524}
+    - target: {fileID: 2310889213408456459, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 8659297588210148732, guid: c6fc2b77d8a71a04593f49af5abdef86, type: 3}
@@ -543,6 +547,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2800970449062416790, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1118882524}
+    - target: {fileID: 2800970449062416790, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 557821}
@@ -559,12 +567,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2800970449062416790, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800970449062416790, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseGame
       objectReference: {fileID: 0}
     - target: {fileID: 2800970449062416790, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: WeaponSelector
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800970449062416790, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelSystem, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2800970449062416790, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -670,6 +686,10 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 143752789}
+    - target: {fileID: 7825700251934368570, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: upgradeMenu
+      value: 
+      objectReference: {fileID: 1401079526}
     - target: {fileID: 8972882340141010562, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: m_Name
       value: WeaponRotate
@@ -1317,7 +1337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -120.99994, y: 375}
+  m_AnchoredPosition: {x: -121, y: 375}
   m_SizeDelta: {x: 280, y: 160}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &844802961
@@ -1474,6 +1494,10 @@ PrefabInstance:
       propertyPath: hpSys
       value: 
       objectReference: {fileID: 557821}
+    - target: {fileID: 5536001674346156879, guid: d79a5f0cb2eae264ca89c42b9bdb4ea8, type: 3}
+      propertyPath: lvlSys
+      value: 
+      objectReference: {fileID: 1118882524}
     - target: {fileID: 5931563623623721701, guid: d79a5f0cb2eae264ca89c42b9bdb4ea8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1559,6 +1583,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79a5f0cb2eae264ca89c42b9bdb4ea8, type: 3}
+--- !u!114 &1118882524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7825700251934368570, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+  m_PrefabInstance: {fileID: 218273543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0532610ed576d47a4dc90e660b163a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1188940354
 GameObject:
   m_ObjectHideFlags: 0

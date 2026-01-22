@@ -1,36 +1,34 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JokerMenu : MonoBehaviour
+public class UpgradeChooser : MonoBehaviour
 {
     public Movement m;
     public HpSystem hpSys;
-    public PlayerShooting pShoot;
-    public GameObject cardBulletPrefab;
-    public GameObject coinBulletPrefab;
+    public LevelSystem lvlSys;
+    public PowerUpActivator pUA;
     int card1;
     int card2;
     int card3;
-    bool hasChosen;
 
     [SerializeField] Image c1Img;
     [SerializeField] Image c2Img;
     [SerializeField] Image c3Img;
 
-    [SerializeField] Sprite baseCardImg;
     [SerializeField] Sprite speedUpCard;
     [SerializeField] Sprite dmgUpCard;
     [SerializeField] Sprite extraCard;
     [SerializeField] Sprite hpUpCard;
-    [SerializeField] Sprite lifeStealCard;
+    [SerializeField] Sprite timeUpCard;
     [SerializeField] Sprite attackSpeedUpCard;
     [SerializeField] Sprite pierceUpCard;
 
 
-    string[] upgrades = { "speedUp", "dmgUp", "extraCard", "hpUp", "lifeStealUp", "attackSpeedUp", "pierceUp" };
+    string[] upgrades = { "speedUp", "dmgUp", "extraCard", "hpUp", "timeUp", "attackSpeedUp", "pierceUp" };
     int c1;
     int c2;
     int c3;
+
     private void OnEnable()
     {
         card1 = Random.Range(0, upgrades.Length);
@@ -45,81 +43,65 @@ public class JokerMenu : MonoBehaviour
         c1 = card1;
         c2 = card2;
         c3 = card3;
+
+        SetUpgradeImg(c1Img, c1);
+        SetUpgradeImg(c2Img, c2);
+        SetUpgradeImg(c3Img, c3);
     }
 
     public void Buy1()
     {
-        if (!hasChosen)
-        {
-            ApplyUpgrade(c1);
-            SetUpgradeImg(c1Img, c1);
-            card2 = card1;
-            card3 = card1;
-            hasChosen = true;
-
-        }
+        ApplyUpgrade(c1);
+        card2 = card1;
+        card3 = card1;
     }
     public void Buy2()
     {
-        if (!hasChosen)
-        {
-            ApplyUpgrade(c2);
-            SetUpgradeImg(c2Img, c2);
-            card2 = card1;
-            card3 = card1;
-            hasChosen = true;
-        } 
+        ApplyUpgrade(c2);
+        card2 = card1;
+        card3 = card1;
     }
 
     public void Buy3()
     {
-        if (!hasChosen)
-        {
-            SetUpgradeImg(c3Img, c3);
-            ApplyUpgrade(c3);
-            card2 = card1;
-            card3 = card1;
-            hasChosen = true;
-        } 
+        ApplyUpgrade(c3);
+        card2 = card1;
+        card3 = card1;
     }
     
     void ApplyUpgrade(int upgradeSlot)
     {
         if (upgradeSlot == 0)
         {
-            m.speed++;
-            m.baseSpeed++;
+            pUA.poweredSpeed++;
         }
         else if (upgradeSlot == 1)
         {
-            pShoot.damage++;
-            pShoot.baseDamage++;
+            pUA.poweredDamage += 10;
         }
         else if (upgradeSlot == 2)
         {
-            pShoot.cardAmount++;
-            pShoot.baseCardAmount++;
+            pUA.poweredCardAmount++;
         }
         else if (upgradeSlot == 3)
         {
-            hpSys.hp += 10;
-            hpSys.maxHp += 10;
+            hpSys.maxShield += 10;
         }
         else if (upgradeSlot == 4)
         {
-            cardBulletPrefab.GetComponent<Bullet>().lifestealAmount += 1;
-            coinBulletPrefab.GetComponent<CoinProjectile>().lifestealAmount += 3;
+            pUA.powerUpDuration++;
         }
         else if (upgradeSlot == 5)
         {
-            pShoot.cooldown -= 0.1f;
-            pShoot.baseCooldown -= 0.1f;
+            pUA.poweredCooldown += 0.2f;
         }
         else if (upgradeSlot == 6)
         {
-            pShoot.pierceAmount += 1;
-            pShoot.basePierceAmount += 1;
+            pUA.poweredPierceAmount ++;
         }
+        lvlSys.inMenu = false;
+        Time.timeScale = 1;
+        this.gameObject.SetActive(false);
     }
 
     void SetUpgradeImg(Image targetImage, int upgradeSlot)
@@ -143,7 +125,7 @@ public class JokerMenu : MonoBehaviour
         }
         else if (upgradeSlot == 4)
         {
-            targetImage.sprite = lifeStealCard;
+            targetImage.sprite = timeUpCard;
         }
         else if (upgradeSlot == 5)
         {
@@ -157,16 +139,5 @@ public class JokerMenu : MonoBehaviour
         {
             targetImage.sprite = null;
         }
-    }
-
-    public void ContinueGame()
-    {
-        hpSys.inMenu = false;
-        Time.timeScale = 1;
-        this.gameObject.SetActive(false);
-        hasChosen = false;
-        c1Img.sprite = baseCardImg;
-        c2Img.sprite = baseCardImg;
-        c3Img.sprite = baseCardImg;
     }
 }

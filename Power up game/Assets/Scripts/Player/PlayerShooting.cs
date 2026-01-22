@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerShooting : MonoBehaviour
 {
     public HpSystem hpSys;
+    public LevelSystem lvlSys;
     Movement m;
     Rigidbody2D rb;
 
@@ -33,6 +34,7 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         m = GetComponent<Movement>();
+        lvlSys = GetComponent<LevelSystem>();
         rb = GetComponent<Rigidbody2D>();
         baseDamage = damage;
         baseCooldown = cooldown;
@@ -45,7 +47,7 @@ public class PlayerShooting : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed && (hpSys.inMenu == false || hpSys.inPauseMenu == false))
+        if (context.performed && (lvlSys.inMenu == false || hpSys.inPauseMenu == false))
         {
             shooting = true;
         }
