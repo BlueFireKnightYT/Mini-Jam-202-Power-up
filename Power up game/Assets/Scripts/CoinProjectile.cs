@@ -7,11 +7,8 @@ public class CoinProjectile : MonoBehaviour
 {
     Rigidbody2D rb;
     PlayerShooting ps;
-    CapsuleCollider2D coll;
     public GameObject linePrefab;
     public float lineDuration = 0.1f;
-    Vector3 startPosition;
-    Vector3 endPosition;
     public bool beenHit;
     public bool isLastProjectile;
     bool finalShot;
@@ -22,12 +19,10 @@ public class CoinProjectile : MonoBehaviour
     Vector2 nextCoinPos;
     GameObject nextCoin;
     GameObject closestEnemy;
-    float coinOffset = 2f;
     GameObject lineObj;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<CapsuleCollider2D>();
         ps = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerShooting>();
         rb.AddForce(transform.up * 5, ForceMode2D.Impulse);
         damage = baseDamage;
@@ -130,7 +125,7 @@ public class CoinProjectile : MonoBehaviour
         nextCoin.GetComponent<CoinProjectile>().beenHit = true;
         if (nextCoin != null)
         {
-                nextCoin.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
+            nextCoin.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
             nextCoin.GetComponent<CoinProjectile>().damage += damage;
             nextCoin.GetComponent<CoinProjectile>().lifestealAmount += lifestealAmount;
         }
