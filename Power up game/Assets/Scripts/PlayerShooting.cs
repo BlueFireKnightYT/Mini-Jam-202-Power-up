@@ -1,11 +1,15 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
 {
     public HpSystem hpSys;
+    Movement m;
+    Rigidbody2D rb;
 
-    [SerializeField] GameObject bulletPrefab;
+    public Sprite[] weaponSprites;
+    public GameObject[] projectilePrefabs;
     public float cooldown;
     public float baseCooldown;
     public Transform cardPos;
@@ -21,13 +25,27 @@ public class PlayerShooting : MonoBehaviour
     public int baseCardAmount;
     public int pierceAmount;
     public int basePierceAmount;
+    GameObject bulletPrefab;
+    public SpriteRenderer weaponSprite;
+    int currentBullet;
+    int currentWeapon;
+    bool firstCoins;
+    int shotCoins;
 
+    public GameObject lastProjectile;
     private void Start()
     {
+        m = GetComponent<Movement>();
+        rb = GetComponent<Rigidbody2D>();
         baseDamage = damage;
         baseCooldown = cooldown;
         baseCardAmount = cardAmount;
         basePierceAmount = pierceAmount;
+        bulletPrefab = projectilePrefabs[0];
+        weaponSprite.sprite = weaponSprites[0];
+        currentBullet = 0;
+        currentWeapon = 0;
+        firstCoins = true;
     }
     public void Shoot(InputAction.CallbackContext context)
     {
@@ -45,10 +63,19 @@ public class PlayerShooting : MonoBehaviour
     {
         if (canShoot && shooting)
         {
-            shotCardAmount = 0;
-            canShoot = false;
-            neededTime = cooldown;
-            InvokeRepeating("ShootCard", 0, 0.1f);
+            if(bulletPrefab.GetComponent<Bullet>() != null)
+            {
+                shotCardAmount = 0;
+                canShoot = false;
+                neededTime = cooldown;
+                InvokeRepeating("ShootCard", 0, 0.1f);
+            }
+            else if (bulletPrefab.GetComponent<CoinProjectile>() != null)
+            {
+                neededTime = cooldown;
+                canShoot = false;
+                Invoke("ShootCoin", 0f);
+            }
         }
         if(shotCardAmount >= cardAmount)
         {
@@ -67,12 +94,35 @@ public class PlayerShooting : MonoBehaviour
 
     void ShootCard()
     {
-        Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
-        shotCardAmount++;
+            GameObject projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
+            shotCardAmount++;
+            projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
+    }
+
+    void ShootCoin()
+    {
+        GameObject projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
+        lastProjectile = projectile;
+        projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
     }
 
     public void DoLifesteal()
     {
         hpSys.hp += lifestealAmount;
+    }
+
+    public void WeaponSelector(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            currentBullet++;
+            currentWeapon++;
+        }
+
+        currentWeapon = (currentWeapon + weaponSprites.Length) % weaponSprites.Length;
+        currentBullet = (currentBullet + projectilePrefabs.Length) % projectilePrefabs.Length;
+
+        weaponSprite.sprite = weaponSprites[currentWeapon];
+        bulletPrefab = projectilePrefabs[currentBullet];
     }
 }

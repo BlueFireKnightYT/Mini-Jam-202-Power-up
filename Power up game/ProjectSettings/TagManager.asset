@@ -8,6 +8,7 @@ TagManager:
   - player
   - enemy
   - joker
+  - coin
   layers:
   - Default
   - TransparentFX

@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     Vector2 input;
     public float baseSpeed;
     public float speed = 5f;
-    public Transform cardRotate;
+    public Transform weaponRotate;
     public GameObject jokerMenu;
 
     InputAction lookAt;
@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
         {
             rb.AddForce(input * speed * 5);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(lookAt.ReadValue<Vector2>());
-            cardRotate.up = mousePos - Vector2.zero;
+            weaponRotate.up = mousePos - Vector2.zero;
         }
     }
 
