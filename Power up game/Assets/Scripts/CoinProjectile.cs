@@ -16,6 +16,7 @@ public class CoinProjectile : MonoBehaviour
     public bool isLastProjectile;
     bool finalShot;
     public float baseDamage;
+    public int lifestealAmount;
     float damage;
     float minDistance;
     Vector2 nextCoinPos;
@@ -45,16 +46,13 @@ public class CoinProjectile : MonoBehaviour
             {
                 Destroy(this.gameObject);
                 collision.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
-                if (collision.GetComponent<CoinProjectile>().beenHit == true)
-                {
-                    print("hasbeenhit");
-                }  
             }
         }
         if (collision.CompareTag("enemy") == true)
         {
             EnemyBehaviour enemyScript = collision.gameObject.GetComponent<EnemyBehaviour>();
             enemyScript.enemyHealth -= damage;
+            enemyScript.DamageTakenText(damage);
             Destroy(this.gameObject);
         }
     }
@@ -107,6 +105,8 @@ public class CoinProjectile : MonoBehaviour
             {
                 EnemyBehaviour behaviour = closestEnemy.GetComponent<EnemyBehaviour>();
                 behaviour.enemyHealth -= damage;
+                behaviour.DamageTakenText(damage);
+                ps.DoLifesteal(lifestealAmount);
                 DrawEnemyLine(closestEnemy.transform.position);
             }
             Destroy(this.gameObject, lineDuration);
@@ -132,6 +132,7 @@ public class CoinProjectile : MonoBehaviour
         {
                 nextCoin.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
             nextCoin.GetComponent<CoinProjectile>().damage += damage;
+            nextCoin.GetComponent<CoinProjectile>().lifestealAmount += lifestealAmount;
         }
         Destroy(lineObj);
         Destroy(this.gameObject);

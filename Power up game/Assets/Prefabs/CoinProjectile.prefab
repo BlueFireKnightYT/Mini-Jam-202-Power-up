@@ -174,4 +174,5 @@ MonoBehaviour:
   lineDuration: 0.05
   beenHit: 0
   isLastProjectile: 0
-  baseDamage: 10
+  baseDamage: 20
+  lifestealAmount: 5

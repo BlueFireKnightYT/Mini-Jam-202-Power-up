@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -5,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
     HpSystem hpSys;
     LevelSystem levelSys;
     Rigidbody2D rb;
+    public Canvas canvas;
     public float enemySpeed;
     public int enemyDamage;
     Vector2 playerVector;
@@ -16,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     public int treasureChance;
     public bool canMove;
     public bool dashing;
+    public GameObject damageText;
 
     private void Start()
     {
@@ -84,4 +87,10 @@ public class EnemyBehaviour : MonoBehaviour
         canHit = true;
     }
 
+    public void DamageTakenText(float damageTaken)
+    {
+        GameObject damageTextObj = Instantiate(damageText, canvas.transform);
+        TextMeshProUGUI textMesh = damageTextObj.GetComponent<TextMeshProUGUI>();
+        textMesh.text = damageTaken.ToString();
+    }
 }

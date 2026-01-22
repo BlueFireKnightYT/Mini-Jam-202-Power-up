@@ -19,7 +19,6 @@ public class PlayerShooting : MonoBehaviour
     bool shooting = false;
     public float damage;
     public float baseDamage;
-    public int lifestealAmount;
     public int cardAmount;
     private int shotCardAmount;
     public int baseCardAmount;
@@ -29,8 +28,6 @@ public class PlayerShooting : MonoBehaviour
     public SpriteRenderer weaponSprite;
     int currentBullet;
     int currentWeapon;
-    bool firstCoins;
-    int shotCoins;
 
     public GameObject lastProjectile;
     private void Start()
@@ -45,7 +42,6 @@ public class PlayerShooting : MonoBehaviour
         weaponSprite.sprite = weaponSprites[0];
         currentBullet = 0;
         currentWeapon = 0;
-        firstCoins = true;
     }
     public void Shoot(InputAction.CallbackContext context)
     {
@@ -72,7 +68,7 @@ public class PlayerShooting : MonoBehaviour
             }
             else if (bulletPrefab.GetComponent<CoinProjectile>() != null)
             {
-                neededTime = cooldown;
+                neededTime = cooldown -0.2f;
                 canShoot = false;
                 Invoke("ShootCoin", 0f);
             }
@@ -106,7 +102,7 @@ public class PlayerShooting : MonoBehaviour
         projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
     }
 
-    public void DoLifesteal()
+    public void DoLifesteal(int lifestealAmount)
     {
         hpSys.hp += lifestealAmount;
     }
@@ -125,4 +121,6 @@ public class PlayerShooting : MonoBehaviour
         weaponSprite.sprite = weaponSprites[currentWeapon];
         bulletPrefab = projectilePrefabs[currentBullet];
     }
+
+    
 }

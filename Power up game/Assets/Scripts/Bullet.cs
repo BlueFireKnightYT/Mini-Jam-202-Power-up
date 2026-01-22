@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     Rigidbody2D bulletRb;
     [SerializeField] float bulletSpeed = 10f;
     PlayerShooting playerShooting;
+    public int lifestealAmount;
     GameObject playerObj;
     int shotPierceAmount;
 
@@ -27,7 +28,8 @@ public class Bullet : MonoBehaviour
         {
             EnemyBehaviour enemyScript = collision.gameObject.GetComponent<EnemyBehaviour>();
             enemyScript.enemyHealth -= playerShooting.damage;
-            playerShooting.DoLifesteal();
+            enemyScript.DamageTakenText(playerShooting.damage);
+            playerShooting.DoLifesteal(lifestealAmount);
             shotPierceAmount++;
             if (shotPierceAmount >= playerShooting.pierceAmount)
             {

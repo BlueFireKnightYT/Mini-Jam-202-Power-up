@@ -6,6 +6,8 @@ public class JokerMenu : MonoBehaviour
     public Movement m;
     public HpSystem hpSys;
     public PlayerShooting pShoot;
+    public GameObject cardBulletPrefab;
+    public GameObject coinBulletPrefab;
     int card1;
     int card2;
     int card3;
@@ -105,7 +107,8 @@ public class JokerMenu : MonoBehaviour
         }
         else if (upgradeSlot == 4)
         {
-            pShoot.lifestealAmount += 5;
+            cardBulletPrefab.GetComponent<Bullet>().lifestealAmount += 1;
+            coinBulletPrefab.GetComponent<CoinProjectile>().lifestealAmount += 3;
         }
         else if (upgradeSlot == 5)
         {
