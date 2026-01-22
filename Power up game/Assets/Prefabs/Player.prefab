@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4014313607069082508}
   - component: {fileID: 1589517468346151322}
   m_Layer: 0
-  m_Name: CardPos
+  m_Name: WeaponPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,22 +334,6 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3688112732473469382}
-        m_TargetAssemblyTypeName: HpSystem, Assembly-CSharp
-        m_MethodName: Upgrade
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 626c5401-54c1-4703-bda5-ba3a116e775b
-    m_ActionName: 'Player/Upgrade[/Keyboard/t]'
-  - m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 3109790425041623733}
         m_TargetAssemblyTypeName: PowerUpActivator, Assembly-CSharp
         m_MethodName: PowerUp
@@ -380,6 +364,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c48d066b-ed27-472a-80f8-9c432f2470d8
     m_ActionName: 'Player/OpenPauseMenu[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2310889213408456459}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: WeaponSelector
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e3622a58-18c0-41ba-87b2-b85e3de61ace
+    m_ActionName: 'Player/ScrollWeapon[/Mouse/scroll]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -400,7 +400,7 @@ MonoBehaviour:
   hpSys: {fileID: 3688112732473469382}
   baseSpeed: 0
   speed: 5
-  cardRotate: {fileID: 7667207627187913509}
+  weaponRotate: {fileID: 7667207627187913509}
   jokerMenu: {fileID: 0}
 --- !u!114 &2310889213408456459
 MonoBehaviour:
@@ -415,18 +415,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   hpSys: {fileID: 3688112732473469382}
-  bulletPrefab: {fileID: 8379585933943714111, guid: 01e38c131271ede41ac7c203f781a991, type: 3}
+  lvlSys: {fileID: 7825700251934368570}
+  weaponSprites:
+  - {fileID: 21300000, guid: 031eef16232479c47a3263297fe1f945, type: 3}
+  - {fileID: 21300000, guid: a7741ab7de028e0418b09601d3669cb5, type: 3}
+  projectilePrefabs:
+  - {fileID: 8379585933943714111, guid: 01e38c131271ede41ac7c203f781a991, type: 3}
+  - {fileID: 8659297588210148732, guid: c6fc2b77d8a71a04593f49af5abdef86, type: 3}
   cooldown: 1
   baseCooldown: 0
   cardPos: {fileID: 4014313607069082508}
   damage: 40
   baseDamage: 0
-  lifestealAmount: 2
-  baseLifestealAmount: 0
   cardAmount: 1
   baseCardAmount: 0
   pierceAmount: 1
   basePierceAmount: 0
+  weaponSprite: {fileID: 1589517468346151322}
+  lastProjectile: {fileID: 0}
 --- !u!95 &1993844278842132305
 Animator:
   serializedVersion: 7
@@ -478,11 +484,9 @@ MonoBehaviour:
   shield: 0
   maxShield: 0
   neededHp: 75
-  inMenu: 0
   inPauseMenu: 0
   hpSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
-  upgradeMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
 --- !u!114 &7825700251934368570
 MonoBehaviour:
@@ -501,6 +505,8 @@ MonoBehaviour:
   xpLevelAmount: 75
   slider: {fileID: 0}
   levelText: {fileID: 0}
+  upgradeMenu: {fileID: 0}
+  inMenu: 0
 --- !u!114 &3109790425041623733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +524,6 @@ MonoBehaviour:
   UIPowered: {fileID: 0}
   poweredSpeed: 0
   poweredDamage: 0
-  poweredLifesteal: 0
   poweredCooldown: 0
   realCooldown: 0
   poweredCardAmount: 0
@@ -619,7 +624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7667207627187913509}
   m_Layer: 0
-  m_Name: CardRotate
+  m_Name: WeaponRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -74,6 +73,13 @@ public class PlayerShooting : MonoBehaviour
                 canShoot = false;
                 Invoke("ShootCoin", 0f);
             }
+            else  if (bulletPrefab.GetComponent<SlotBullet>() != null)
+            {
+                int slotGunCooldown = 2;
+                neededTime = slotGunCooldown;
+                canShoot = false;
+                Invoke("ShootSlot", 0);
+            }
         }
         if(shotCardAmount >= cardAmount)
         {
@@ -102,6 +108,17 @@ public class PlayerShooting : MonoBehaviour
         GameObject projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
         lastProjectile = projectile;
         projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
+    }
+
+    void ShootSlot()
+    {
+        int shots = Random.Range(4, 13);
+
+        for (int i = 0; i <= shots; i++)
+        { 
+            GameObject projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation * Quaternion.Euler(0f, 0f, Random.Range(-15, 15)));
+            projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
+        }
     }
 
     public void DoLifesteal(int lifestealAmount)

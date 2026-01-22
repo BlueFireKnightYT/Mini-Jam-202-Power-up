@@ -41,6 +41,8 @@ public class CoinProjectile : MonoBehaviour
             {
                 Destroy(this.gameObject);
                 collision.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
+                collision.GetComponent<CoinProjectile>().damage += damage;
+                collision.GetComponent<CoinProjectile>().lifestealAmount += lifestealAmount;
             }
         }
         if (collision.CompareTag("enemy") == true)

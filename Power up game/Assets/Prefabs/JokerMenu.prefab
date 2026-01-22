@@ -321,7 +321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6464650642935967228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -395,7 +395,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   m: {fileID: 0}
   hpSys: {fileID: 0}
+  lvlSys: {fileID: 0}
   pShoot: {fileID: 0}
+  cardBulletPrefab: {fileID: 0}
+  coinBulletPrefab: {fileID: 0}
   c1Img: {fileID: 32202043449397321}
   c2Img: {fileID: 2671765220625986953}
   c3Img: {fileID: 6863649365804885235}
