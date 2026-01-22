@@ -19,7 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool canMove;
     public bool dashing;
     public GameObject damageText;
-
+    bool hasDied;
     private void Start()
     {
         enemyHealth = enemyBaseHealth;
@@ -33,14 +33,16 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void Update()
     {
-        if (enemyHealth <= 0)
+        if (enemyHealth <= 0 && !hasDied)
         {
             if(treasureChance == 0)
             {
                 Instantiate(jokerCardPrefab, transform.position, Quaternion.identity);
             }
             levelSys.xpCount += 10;
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.5f);
+            canMove = false;
+            hasDied = true;
         }
     }
 
