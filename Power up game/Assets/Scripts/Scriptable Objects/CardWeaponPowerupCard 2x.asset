@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc4884f0afd88f4e8a16c86b48e0c80, type: 3}
   m_Name: CardWeaponPowerupCard 2x
   m_EditorClassIdentifier: Assembly-CSharp::CardWeaponPC
-  cardName: 
-  cardDescription: 
-  cardSprite: {fileID: 0}
+  cardName: Double projectiles
+  cardDescription: Doubles the projectile you shoot!
+  cardSprite: {fileID: 7144451672500045699, guid: 1acc7be8162d86f42b58e3be388de66f, type: 3}
+  inventorySprite: {fileID: 0}
   type: 0
-  projectileAmount: 0
-  projectileSpeed: 0
+  projectileAmount: 2
+  projectileSpeed: 1
   isSpecialAbility: 0
