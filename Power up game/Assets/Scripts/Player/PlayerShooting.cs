@@ -26,7 +26,12 @@ public class PlayerShooting : MonoBehaviour
     public int basePierceAmount;
     GameObject bulletPrefab;
     public SpriteRenderer weaponSprite;
-    int currentWeapon;
+    public int currentWeapon;
+
+    public GameObject projectile
+
+    public bool explosiveBullets;
+    public GameObject explosionPrefab;
 
     public GameObject lastProjectile;
     private void Start()
@@ -99,11 +104,16 @@ public class PlayerShooting : MonoBehaviour
             GameObject projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
             shotCardAmount++;
             projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
+        if (explosiveBullets)
+        {
+            projectile.GetComponent<Bullet>().canExplode = true;
+            projectile.GetComponent<Bullet>().explosionPrefab = explosionPrefab;
+        }
     }
 
     void ShootCoin()
     {
-        GameObject projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
+        projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
         lastProjectile = projectile;
         projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
     }

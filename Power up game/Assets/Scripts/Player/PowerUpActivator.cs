@@ -5,14 +5,16 @@ using UnityEngine.UI;
 public class PowerUpActivator : MonoBehaviour
 {
     bool ableToPowerUp;
-    bool powerUpActive;
+    public bool powerUpActive;
+    public bool powerUpEnabled;
     public GameObject playerObj;
     public Image UIPowered;
     HpSystem hpSys;
     public ItemSlot slot1;
     public ItemSlot slot2;
     public ItemSlot slot3;
-    PlayerShooting playerShooting; 
+    PlayerShooting playerShooting;
+    public SpinningCards uiCards;
 
     private void Start()
     {
@@ -34,7 +36,7 @@ public class PowerUpActivator : MonoBehaviour
     }
     public void PowerUp(InputAction.CallbackContext context)
     {
-        if (ableToPowerUp && context.performed && !powerUpActive)
+        if (ableToPowerUp && context.performed && !powerUpActive && powerUpEnabled)
         {
             ableToPowerUp = false;
             powerUpActive = true;
@@ -75,18 +77,22 @@ public class PowerUpActivator : MonoBehaviour
     public void Slot1Ability()
     {
         CardIdentifier cI = slot1.cardInSlot.GetComponent<CardIdentifier>();
-        cI.card.onActivate(transform.position);
+        cI.card.onActivate(transform.position, playerShooting.weapons[playerShooting.currentWeapon].projectilePrefab);
+        cI.card.EnableExplosiveBullets(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
+        uiCards.SpinCard1();
     }
     public void StopSlot1Ability()
     {
         CardIdentifier cI = slot1.cardInSlot.GetComponent<CardIdentifier>();
+        cI.card.EnableExplosiveBullets(false);
         playerShooting.cardAmount /= cI.card.projectileAmount;
     }
     public void Slot2Ability()
     {
         CardIdentifier cI = slot2.cardInSlot.GetComponent<CardIdentifier>();
-        cI.card.onActivate(transform.position);
+        cI.card.onActivate(transform.position, playerShooting.weapons[playerShooting.currentWeapon].projectilePrefab);
+        cI.card.EnableExplosiveBullets(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
         if (cI.card.retryAmount > 0)
         {
@@ -95,11 +101,13 @@ public class PowerUpActivator : MonoBehaviour
                 Invoke("Slot1Ability", 0.2f);
             }
         }
+        uiCards.SpinCard2();
     }
     public void StopSlot2Ability()
     {
         CardIdentifier cI = slot2.cardInSlot.GetComponent<CardIdentifier>();
         playerShooting.cardAmount /= cI.card.projectileAmount;
+        cI.card.EnableExplosiveBullets(false);
         if (cI.card.retryAmount > 0)
         {
             for (int i = 0; i < cI.card.retryAmount; i++)
@@ -107,11 +115,13 @@ public class PowerUpActivator : MonoBehaviour
                 Invoke("StopSlot1Ability", 0);
             }
         }
+        
     }
     public void Slot3Ability()
     {
         CardIdentifier cI = slot3.cardInSlot.GetComponent<CardIdentifier>();
-        cI.card.onActivate(transform.position);
+        cI.card.onActivate(transform.position, playerShooting.weapons[playerShooting.currentWeapon].projectilePrefab);
+        cI.card.EnableExplosiveBullets(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
         if (cI.card.retryAmount > 0)
         {
@@ -120,11 +130,13 @@ public class PowerUpActivator : MonoBehaviour
                 Invoke("Slot2Ability", 0.2f);
             }
         }
+        uiCards.SpinCard3();
     }
     public void StopSlot3Ability()
     {
         CardIdentifier cI = slot3.cardInSlot.GetComponent<CardIdentifier>();
         playerShooting.cardAmount /= cI.card.projectileAmount;
+        cI.card.EnableExplosiveBullets(false);
         if (cI.card.retryAmount > 0)
         {
             for (int i = 0; i < cI.card.retryAmount; i++)

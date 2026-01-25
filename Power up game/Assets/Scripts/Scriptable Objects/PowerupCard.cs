@@ -16,10 +16,14 @@ public abstract class PowerupCard : ScriptableObject
     public Sprite cardSprite;
     public Sprite inventorySprite;
     public CardType type;
-    public int projectileAmount;
+    public int projectileAmount = 1;
     public int retryAmount;
 
-    public virtual void onActivate(Vector2 center)
+    public virtual void onActivate(Vector2 center, GameObject projectilePrefab)
+    {
+
+    }
+    public virtual void EnableExplosiveBullets(bool enable)
     {
 
     }

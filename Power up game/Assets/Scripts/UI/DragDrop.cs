@@ -1,13 +1,15 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerDownHandler
 {
     RectTransform rectTransform;
     Vector2 pos;
     CanvasGroup canvasGroup;
     Transform originalParent;
     Transform cardsParent;
+
+    public GameObject currentSlot = null;
 
     public bool isUnlocked = false;
 
@@ -24,18 +26,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         canvasGroup = GetComponent<CanvasGroup>();
         
     }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("Pointer Down");
-    }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (isUnlocked)
         {
-             
             rectTransform.anchoredPosition += eventData.delta;
         }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("Pointer Down");
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -43,7 +45,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         transform.SetParent(cardsParent);
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
-        inSlot = false;  
+        inSlot = false;
+        currentSlot.GetComponent<ItemSlot>().cardInSlot = null;
+        currentSlot = null;
     }
 
     public void OnEndDrag(PointerEventData eventData)

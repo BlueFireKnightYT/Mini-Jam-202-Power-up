@@ -8,6 +8,11 @@ public class Bullet : MonoBehaviour
     public int lifestealAmount;
     GameObject playerObj;
     int shotPierceAmount;
+    ParticleSystem particles;
+    SpriteRenderer sr;
+
+    public bool canExplode;
+    public GameObject explosionPrefab;
 
     void Start()
     {
@@ -15,6 +20,8 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject, 2);
         playerObj = GameObject.FindGameObjectWithTag("player");
         playerShooting = playerObj.GetComponent<PlayerShooting>();
+        particles = GetComponent<ParticleSystem>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -30,11 +37,21 @@ public class Bullet : MonoBehaviour
             enemyScript.DamageTakenText(playerShooting.damage);
             enemyScript.enemyHealth -= playerShooting.damage;
             playerShooting.DoLifesteal(lifestealAmount);
+            if (canExplode)
+            {
+                Instantiate(explosionPrefab, transform, true);
+                Debug.Log("boom");
+                particles.Play();
+            }
             shotPierceAmount++;
             if (shotPierceAmount >= playerShooting.pierceAmount)
             {
-                Destroy(this.gameObject);
+                bulletSpeed = 0f;
+                bulletRb.linearVelocity = Vector2.zero;
+                sr.sprite = null;
+                Destroy(this.gameObject, 0.5f);
             }
+            
         }
     }
 }

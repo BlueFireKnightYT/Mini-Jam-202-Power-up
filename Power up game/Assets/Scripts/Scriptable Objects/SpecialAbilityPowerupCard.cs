@@ -1,12 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CardWeaponPowerupCard", menuName = "Scriptable Objects/PowerupCard/SpecialAbilities/CircleShoot)]")]
+[CreateAssetMenu(fileName = "CardWeaponPowerupCard", menuName = "Scriptable Objects/PowerupCard/SpecialAbilities/CircleShoot")]
 public class SpecialAbilityPowerupCard : PowerupCard
 {
-    public GameObject projectilePrefab;
     public int projectileCircleAmount;
 
-    public override void onActivate(Vector2 center)
+    public override void onActivate(Vector2 center, GameObject projectilePrefab)
     {
         for (int i = 0; i < projectileCircleAmount; i++)
         {
@@ -16,7 +15,7 @@ public class SpecialAbilityPowerupCard : PowerupCard
             Vector2 spawnPos = center + new Vector2(x, y);
             Quaternion rotation = Quaternion.identity;
             rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
-            Instantiate(projectilePrefab, spawnPos, rotation);
+            GameObject projectile = Instantiate(projectilePrefab, spawnPos, rotation);
         }
     }
 }
