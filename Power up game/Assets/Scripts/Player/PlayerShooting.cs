@@ -28,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
     public SpriteRenderer weaponSprite;
     public int currentWeapon;
 
-    public GameObject projectile
+    public GameObject projectile;
 
     public bool explosiveBullets;
     public GameObject explosionPrefab;
