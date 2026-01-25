@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dc4884f0afd88f4e8a16c86b48e0c80, type: 3}
-  m_Name: CardWeaponPowerupCard 2x
+  m_Name: CardWeaponPowerupCard 2xSpeed
   m_EditorClassIdentifier: Assembly-CSharp::CardWeaponPC
-  cardName: Double projectiles
-  cardDescription: Doubles the projectile you shoot!
-  cardSprite: {fileID: 7144451672500045699, guid: 1acc7be8162d86f42b58e3be388de66f, type: 3}
-  inventorySprite: {fileID: -8199586378944479437, guid: 85d38acd8fe9c114986b90b58fdb51a0, type: 3}
+  cardName: Double projectile speed
+  cardDescription: Your projectiles fly twice as fast!
+  cardSprite: {fileID: -8199586378944479437, guid: 85d38acd8fe9c114986b90b58fdb51a0, type: 3}
+  inventorySprite: {fileID: 0}
   type: 0
-  projectileAmount: 2
+  projectileAmount: 1
   projectileSpeed: 1
   isSpecialAbility: 0

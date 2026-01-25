@@ -25,7 +25,8 @@ public class Movement : MonoBehaviour
         lvlSys = GetComponent<LevelSystem>();
         lookAt = PlayerInput.actions.FindAction("LookAt");
         jokerMenu.SetActive(false);
-        
+        Time.timeScale = 1;
+
     }
 
     private void FixedUpdate()
@@ -52,6 +53,10 @@ public class Movement : MonoBehaviour
             jokerMenu.SetActive(true);
             Destroy(collision.gameObject);
             Time.timeScale = 0f;
+        }
+        if(collision.CompareTag("powerupcard") == true)
+        {
+
         }
     }
 }
