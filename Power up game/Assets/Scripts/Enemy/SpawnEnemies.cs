@@ -1,115 +1,54 @@
+using System.Collections;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    public GameObject enemy;
-    public GameObject shootingEnemy;
-    public GameObject dashingEnemy;
+    public GameObject[] enemyTypes;
 
     public float baseNeededTime = 5;
-    float neededTime = 5f;
     int spawnedEnemies = 0;
-    int side = 1;
     public GameObject cam;
-    float camPosY;
-    float camPosX;
+    Vector2 camPos;
 
-    int chance;
-
-    private void Update()
+    private void Awake()
     {
-        if (neededTime > 0)
-        {
-            neededTime -= Time.deltaTime;
-        }
-        else if (neededTime <= 0)
-        {
-            camPosX = cam.transform.position.x;
-            camPosY = cam.transform.position.y;
+        StartCoroutine(SpawnClock());
+    }
+    IEnumerator SpawnClock()
+    {
+        yield return new WaitForSeconds(1);
 
-            //spawns the enemy in a random direction outside the camera vieuw
-            side = Random.Range(1, 5);
+        while (true)
+        { 
+            int side = Random.Range(1, 5);
+            int chance = Random.Range(1, 101);
+            int enemyIndex = Random.Range(0, enemyTypes.Length);
+            camPos = cam.transform.position;
 
-            chance = Random.Range(1, 101);
-
-            //right
-            if(side == 1)
-            { 
-                if (chance < 60)
-                { 
-                    Instantiate(enemy, new Vector2(camPosX + Random.Range(10, 15), camPosY + Random.Range(-7, 7)), Quaternion.identity);
-                }
-                else if (chance > 60 && chance < 80)
-                {
-                    Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(10, 15), camPosY + Random.Range(-7, 7)), Quaternion.identity);
-                }
-                else if (chance > 80)
-                {
-                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(10, 15), camPosY + Random.Range(-7, 7)), Quaternion.identity);
-                }
-                    spawnedEnemies++;
-                enemySpawnRateIncrease(spawnedEnemies);
-                
-                neededTime = baseNeededTime;
-            }
-            //up
-            else if (side == 2)
+            switch (side)
             {
-                if (chance < 60)
-                {
-                    Instantiate(enemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(6, 10)), Quaternion.identity);
-                }
-                else if (chance > 60 && chance < 80)
-                {
-                    Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(6, 10)), Quaternion.identity);
-                }
-                else if (chance > 80)
-                {
-                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-10, -10), camPosY + Random.Range(6, 10)), Quaternion.identity);
-                }
-                spawnedEnemies++;
-                enemySpawnRateIncrease(spawnedEnemies);
-                neededTime = baseNeededTime;
+                //als side 1 is spawnt die een enemy boven de camera
+                case 1:
+                    Instantiate(enemyTypes[enemyIndex], new Vector2(camPos.x + Random.Range(-10, 10), camPos.y + Random.Range(6, 10)), Quaternion.identity);
+                    break;
+                // Als side 2 is spawnt die de enemy rechts van de camera
+                case 2:
+                    Instantiate(enemyTypes[enemyIndex], new Vector2(camPos.x + Random.Range(10, 15), camPos.y + Random.Range(-7, 7)), Quaternion.identity);
+                    break;
+                // Als de side 3 is spawnt die de enenmy onder de camera
+                case 3:
+                    Instantiate(enemyTypes[enemyIndex], new Vector2(camPos.x + Random.Range(-10, 10), camPos.y + Random.Range(-10, -6)), Quaternion.identity);
+                    break;
+                // Al side 4 is spawnt de enemy links van de camera
+                case 4:
+                    Instantiate(enemyTypes[enemyIndex], new Vector2(camPos.x + Random.Range(-15, -10), camPos.y + Random.Range(-7, 7)), Quaternion.identity);
+                    break;
             }
-            //left
-            else if (side == 3)
-            {
-                if (chance < 60)
-                {
-                    Instantiate(enemy, new Vector2(camPosX + Random.Range(-15, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
-                }
-                else if (chance > 60 && chance < 80)
-                {
-                    Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-15, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
-                }
-                else if (chance > 80)
-                {
-                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-15, -10), camPosY + Random.Range(-7, 7)), Quaternion.identity);
-                }
-                spawnedEnemies++;
-                enemySpawnRateIncrease(spawnedEnemies);
-                neededTime = baseNeededTime;
-            }
-            //down
-            else if (side == 4)
-            {
-                if (chance < 60)
-                {
-                    Instantiate(enemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-10, -6)), Quaternion.identity);
-                }
-                else if (chance > 60 && chance < 80)
-                {
-                    Instantiate(shootingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-10, -6)), Quaternion.identity);
-                }
-                else if (chance > 80)
-                {
-                    Instantiate(dashingEnemy, new Vector2(camPosX + Random.Range(-10, 10), camPosY + Random.Range(-10, -6)), Quaternion.identity);
-                }
-                spawnedEnemies++;
-                enemySpawnRateIncrease(spawnedEnemies);
-                neededTime = baseNeededTime;
+            spawnedEnemies++;
+            enemySpawnRateIncrease(spawnedEnemies);
 
-            }
+            float neededTime = baseNeededTime;
+            yield return new WaitForSeconds(neededTime);
         }
     }
 
@@ -118,12 +57,12 @@ public class SpawnEnemies : MonoBehaviour
         if (spawnedEnemies % 5 == 0)
         {
 
-            if (baseNeededTime > 0.8)
+            if (baseNeededTime > 0.5f)
             {
                 baseNeededTime = baseNeededTime / 100 * 95;
                 Debug.Log(baseNeededTime);
             }
-            else if (baseNeededTime <= .5)
+            else if (baseNeededTime <= 0.5f)
             {
                 baseNeededTime = 0.5f;
             }
