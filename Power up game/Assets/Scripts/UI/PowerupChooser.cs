@@ -87,6 +87,7 @@ public class PowerupChooser : MonoBehaviour
                     GameObject UiCard = Instantiate(inventoryCard, cardGroup);
                     CardIdentifier cI = UiCard.GetComponent<CardIdentifier>();
                     cI.cardName = upgradeCard.cardName;
+                    cI.card = upgradeCard;
                     UiCard.GetComponent<Image>().sprite = upgradeCard.cardSprite;
                     return;
                 }
@@ -100,6 +101,7 @@ public class PowerupChooser : MonoBehaviour
                 GameObject UiCard = Instantiate(inventoryCard, cardgroup);
                 CardIdentifier cI = UiCard.GetComponent<CardIdentifier>();
                 cI.cardName = upgradeCard.cardName;
+                cI.card = upgradeCard;
                 UiCard.GetComponent<Image>().sprite = upgradeCard.cardSprite;
                 return;
             }

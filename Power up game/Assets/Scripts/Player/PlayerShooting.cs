@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,8 +9,7 @@ public class PlayerShooting : MonoBehaviour
     Movement m;
     Rigidbody2D rb;
 
-    public Sprite[] weaponSprites;
-    public GameObject[] projectilePrefabs;
+    public List<PlayerWeapon> weapons;
     public float cooldown;
     public float baseCooldown;
     public Transform cardPos;
@@ -26,7 +26,6 @@ public class PlayerShooting : MonoBehaviour
     public int basePierceAmount;
     GameObject bulletPrefab;
     public SpriteRenderer weaponSprite;
-    int currentBullet;
     int currentWeapon;
 
     public GameObject lastProjectile;
@@ -39,9 +38,8 @@ public class PlayerShooting : MonoBehaviour
         baseCooldown = cooldown;
         baseCardAmount = cardAmount;
         basePierceAmount = pierceAmount;
-        bulletPrefab = projectilePrefabs[0];
-        weaponSprite.sprite = weaponSprites[0];
-        currentBullet = 0;
+        bulletPrefab = weapons[0].projectilePrefab;
+        weaponSprite.sprite = weapons[0].weaponSprite;
         currentWeapon = 0;
     }
     public void Shoot(InputAction.CallbackContext context)
@@ -130,15 +128,13 @@ public class PlayerShooting : MonoBehaviour
     {
         if (context.performed)
         {
-            currentBullet++;
             currentWeapon++;
         }
 
-        currentWeapon = (currentWeapon + weaponSprites.Length) % weaponSprites.Length;
-        currentBullet = (currentBullet + projectilePrefabs.Length) % projectilePrefabs.Length;
+        currentWeapon = (currentWeapon + weapons.Count) % weapons.Count;
 
-        weaponSprite.sprite = weaponSprites[currentWeapon];
-        bulletPrefab = projectilePrefabs[currentBullet];
+        weaponSprite.sprite = weapons[currentWeapon].weaponSprite;
+        bulletPrefab = weapons[currentWeapon].projectilePrefab;
     }
 
     

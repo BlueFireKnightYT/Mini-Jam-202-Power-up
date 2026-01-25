@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f340081484694e34e94d858359d053ab, type: 3}
+  m_Name: SlotgunWeapon
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
+  weaponName: 
+  weaponSprite: {fileID: -8444840788763433450, guid: b846c7fe37506fc4ca85bca1b5ecbe1c, type: 3}
+  projectilePrefab: {fileID: 8462398413584418841, guid: eacf01f245571b3438c0f58da079d476, type: 3}
+  projectileForce: 0

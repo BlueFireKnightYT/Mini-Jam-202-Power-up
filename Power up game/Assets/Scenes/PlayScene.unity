@@ -455,6 +455,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2310889213408456459, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2310889213408456459, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: 'weapons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 787083912cd444c4da70ed0902863971, type: 2}
+    - target: {fileID: 2310889213408456459, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: 'weapons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c102847ea9c0b084bbda197b1e9e9359, type: 2}
+    - target: {fileID: 2310889213408456459, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: 'weapons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fb2ad04d0ca2cf545967f352e3f21c0d, type: 2}
+    - target: {fileID: 2310889213408456459, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: weaponSprites.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -510,6 +526,18 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3109790425041623733, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: slot1
+      value: 
+      objectReference: {fileID: 315478709}
+    - target: {fileID: 3109790425041623733, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: slot2
+      value: 
+      objectReference: {fileID: 245113792}
+    - target: {fileID: 3109790425041623733, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: slot3
+      value: 
+      objectReference: {fileID: 691739807}
     - target: {fileID: 3109790425041623733, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: UIPowered
       value: 
@@ -574,6 +602,22 @@ PrefabInstance:
       propertyPath: jokerMenu
       value: 
       objectReference: {fileID: 2019832567}
+    - target: {fileID: 6203275148096579636, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: everyWeapon.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203275148096579636, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: 'everyWeapon.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 787083912cd444c4da70ed0902863971, type: 2}
+    - target: {fileID: 6203275148096579636, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: 'everyWeapon.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c102847ea9c0b084bbda197b1e9e9359, type: 2}
+    - target: {fileID: 6203275148096579636, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: 'everyWeapon.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fb2ad04d0ca2cf545967f352e3f21c0d, type: 2}
     - target: {fileID: 7105441487913533347, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: cam
       value: 
@@ -680,6 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21b0ed3eed4c2347b82a6bea905cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSlot
+  cardInSlot: {fileID: 0}
 --- !u!1 &315478705
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,6 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21b0ed3eed4c2347b82a6bea905cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  cardInSlot: {fileID: 0}
 --- !u!114 &373767532 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2310889213408456459, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
@@ -1356,6 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21b0ed3eed4c2347b82a6bea905cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSlot
+  cardInSlot: {fileID: 0}
 --- !u!1 &709708505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,7 +1768,6 @@ GameObject:
   - component: {fileID: 957746238}
   - component: {fileID: 957746240}
   - component: {fileID: 957746239}
-  - component: {fileID: 957746241}
   - component: {fileID: 957746242}
   m_Layer: 5
   m_Name: Inventory
@@ -1789,30 +1835,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957746237}
   m_CullTransparentMesh: 1
---- !u!114 &957746241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957746237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acab53ee6bdafa84383120d76fd76ff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  card1: {fileID: 0}
-  card2: {fileID: 0}
-  card3: {fileID: 0}
-  card4: {fileID: 0}
-  card5: {fileID: 0}
-  card6: {fileID: 0}
-  card1True: {fileID: 0}
-  card2True: {fileID: 0}
-  card3True: {fileID: 0}
-  card4True: {fileID: 0}
-  card5True: {fileID: 0}
-  card6True: {fileID: 0}
 --- !u!114 &957746242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2379,6 +2401,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ebd714e59cd7ae44dbe5de90ace2be19, type: 2}
   - {fileID: 11400000, guid: 640ef63e47aa0374ea59c1347fb56a5f, type: 2}
   - {fileID: 11400000, guid: 32741fe512886344aa62915165f2553c, type: 2}
+  - {fileID: 11400000, guid: e8adb4d4411c7634cadbbdab3b8a3d76, type: 2}
 --- !u!1 &1409461485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,6 +2865,134 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PixelCorrecter
   source: {fileID: 519420033}
   pixelsPerUnit: 16
+--- !u!1 &1780562185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780562188}
+  - component: {fileID: 1780562187}
+  - component: {fileID: 1780562186}
+  m_Layer: 0
+  m_Name: gunpickup
+  m_TagString: coinWeapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!58 &1780562186
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780562185}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.045990765}
+  m_Radius: 0.6533026
+--- !u!212 &1780562187
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780562185}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 21300000, guid: a7741ab7de028e0418b09601d3669cb5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &1780562188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780562185}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.18, y: -1.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828598323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,3 +3517,4 @@ SceneRoots:
   - {fileID: 1425419201}
   - {fileID: 737847009}
   - {fileID: 1662620784}
+  - {fileID: 1780562188}

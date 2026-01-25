@@ -6,41 +6,30 @@ public class PowerUpActivator : MonoBehaviour
 {
     bool ableToPowerUp;
     bool powerUpActive;
-    public  float powerUpDuration;
     public GameObject playerObj;
     public Image UIPowered;
     HpSystem hpSys;
-    public float poweredSpeed;
-    public float poweredDamage;
-    public float poweredCooldown;
-    public float realCooldown;
-    public int poweredCardAmount;
-    public int poweredPierceAmount;
-    Movement moveScript;
-    PlayerShooting shootScript;
+    public ItemSlot slot1;
+    public ItemSlot slot2;
+    public ItemSlot slot3;
+    PlayerShooting playerShooting; 
 
     private void Start()
     {
         hpSys = playerObj.GetComponent<HpSystem>();
-        moveScript = GetComponent<Movement>();
-        shootScript = GetComponent<PlayerShooting>();
-
+        playerShooting = playerObj.GetComponent<PlayerShooting>();
         UIPowered.color = Color.grey;
     }
 
     private void Update()
     {
-        if(hpSys.hp > hpSys.neededHp)
+        if(hpSys.hp > hpSys.neededHp && !powerUpActive)
         {
             ableToPowerUp = true;
         }
-        if (poweredCooldown > 0) 
+        if (powerUpActive)
         {
-            realCooldown = 0.2f + poweredCooldown / 4 ;
-        }
-        else
-        {
-            realCooldown = poweredCooldown;
+            DuringPowerUp();
         }
     }
     public void PowerUp(InputAction.CallbackContext context)
@@ -49,28 +38,99 @@ public class PowerUpActivator : MonoBehaviour
         {
             ableToPowerUp = false;
             powerUpActive = true;
-            hpSys.shield = hpSys.maxShield;
-            hpSys.hp -= (hpSys.neededHp);
-            moveScript.speed += poweredSpeed;
-            shootScript.damage += poweredDamage;
-            shootScript.cooldown -= realCooldown;
-            shootScript.cardAmount += poweredCardAmount;
-            shootScript.pierceAmount += poweredPierceAmount;
-            Invoke("StopPowerUp", powerUpDuration);
             UIPowered.color = Color.yellow;
+            if(slot1.cardInSlot != null)
+            {
+                Slot1Ability();
+                print("slot1");
+            }
+            if(slot2.cardInSlot != null)
+            {
+                Slot2Ability();
+                print("slot2");
+            }
+            if(slot3.cardInSlot != null)
+            {
+
+                Slot3Ability();
+                print("slot3");
+            }
+            Invoke("StopPowerUp", 5f);
         }
     }
-
-    void StopPowerUp()
+    public void DuringPowerUp()
     {
-        powerUpActive = false;
-        moveScript.speed = moveScript.baseSpeed;
-        shootScript.damage = shootScript.baseDamage;
-        shootScript.cooldown = shootScript.baseCooldown;
-        shootScript.cardAmount = shootScript.baseCardAmount;
-        shootScript.pierceAmount = shootScript.basePierceAmount;
-        hpSys.shield = 0;
-        UIPowered.color = Color.grey;
+
     }
 
+    public void StopPowerUp()
+    {
+        powerUpActive = false;
+        UIPowered.color = Color.grey;
+        StopSlot1Ability();
+        StopSlot2Ability();
+        StopSlot3Ability();
+    }
+
+    public void Slot1Ability()
+    {
+        CardIdentifier cI = slot1.cardInSlot.GetComponent<CardIdentifier>();
+        cI.card.onActivate(transform.position);
+        playerShooting.cardAmount *= cI.card.projectileAmount;
+    }
+    public void StopSlot1Ability()
+    {
+        CardIdentifier cI = slot1.cardInSlot.GetComponent<CardIdentifier>();
+        playerShooting.cardAmount /= cI.card.projectileAmount;
+    }
+    public void Slot2Ability()
+    {
+        CardIdentifier cI = slot2.cardInSlot.GetComponent<CardIdentifier>();
+        cI.card.onActivate(transform.position);
+        playerShooting.cardAmount *= cI.card.projectileAmount;
+        if (cI.card.retryAmount > 0)
+        {
+            for (int i = 0; i < cI.card.retryAmount; i++)
+            {
+                Invoke("Slot1Ability", 0.2f);
+            }
+        }
+    }
+    public void StopSlot2Ability()
+    {
+        CardIdentifier cI = slot2.cardInSlot.GetComponent<CardIdentifier>();
+        playerShooting.cardAmount /= cI.card.projectileAmount;
+        if (cI.card.retryAmount > 0)
+        {
+            for (int i = 0; i < cI.card.retryAmount; i++)
+            {
+                Invoke("StopSlot1Ability", 0);
+            }
+        }
+    }
+    public void Slot3Ability()
+    {
+        CardIdentifier cI = slot3.cardInSlot.GetComponent<CardIdentifier>();
+        cI.card.onActivate(transform.position);
+        playerShooting.cardAmount *= cI.card.projectileAmount;
+        if (cI.card.retryAmount > 0)
+        {
+            for (int i = 0; i < cI.card.retryAmount; i++)
+            {
+                Invoke("Slot2Ability", 0.2f);
+            }
+        }
+    }
+    public void StopSlot3Ability()
+    {
+        CardIdentifier cI = slot3.cardInSlot.GetComponent<CardIdentifier>();
+        playerShooting.cardAmount /= cI.card.projectileAmount;
+        if (cI.card.retryAmount > 0)
+        {
+            for (int i = 0; i < cI.card.retryAmount; i++)
+            {
+                Invoke("StopSlot2Ability", 0);
+            }
+        }
+    }
 }

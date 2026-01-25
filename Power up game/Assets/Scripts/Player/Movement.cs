@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,15 +14,18 @@ public class Movement : MonoBehaviour
     public float speed = 5f;
     public Transform weaponRotate;
     public GameObject jokerMenu;
+    public PlayerWeapon[] everyWeapon;
 
     InputAction lookAt;
     PlayerInput PlayerInput;
+    PlayerShooting playerShooting;
 
     private void Start()
     {
         baseSpeed = speed;
         rb = GetComponent<Rigidbody2D>();
         PlayerInput = GetComponent<PlayerInput>();
+        playerShooting = GetComponent<PlayerShooting>();
         lvlSys = GetComponent<LevelSystem>();
         lookAt = PlayerInput.actions.FindAction("LookAt");
         jokerMenu.SetActive(false);
@@ -54,9 +58,16 @@ public class Movement : MonoBehaviour
             Destroy(collision.gameObject);
             Time.timeScale = 0f;
         }
-        if(collision.CompareTag("powerupcard") == true)
+        if(collision.CompareTag("coinWeapon") == true)
         {
-
+            foreach(PlayerWeapon weapon in everyWeapon)
+            {
+                if (weapon.weaponName == "Coin")
+                {
+                    playerShooting.weapons.Add(weapon);
+                    Destroy(collision.gameObject);
+                }
+            }
         }
     }
 }

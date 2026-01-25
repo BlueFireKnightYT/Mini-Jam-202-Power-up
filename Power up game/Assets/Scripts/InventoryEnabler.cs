@@ -16,6 +16,5 @@ public class InventoryEnabler : MonoBehaviour
                 this.gameObject.SetActive(false);
             }
         }
-        
     }
 }

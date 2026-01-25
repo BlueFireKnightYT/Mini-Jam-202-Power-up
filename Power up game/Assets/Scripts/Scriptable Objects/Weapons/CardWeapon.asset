@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f340081484694e34e94d858359d053ab, type: 3}
+  m_Name: CardWeapon
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
+  weaponName: Card
+  weaponSprite: {fileID: 21300000, guid: 031eef16232479c47a3263297fe1f945, type: 3}
+  projectilePrefab: {fileID: 8379585933943714111, guid: 01e38c131271ede41ac7c203f781a991, type: 3}
+  projectileForce: 0

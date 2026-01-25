@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
     DragDrop dragDrop;
+    public GameObject cardInSlot;
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
@@ -13,6 +14,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().localPosition = GetComponent<RectTransform>().localPosition;
             dragDrop = eventData.pointerDrag.GetComponent<DragDrop>();
             dragDrop.inSlot = true;
+
+            cardInSlot = eventData.pointerDrag.gameObject;
         }
     }
 }

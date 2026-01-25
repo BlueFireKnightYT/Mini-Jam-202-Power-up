@@ -9,7 +9,7 @@ TagManager:
   - enemy
   - joker
   - coin
-  - powerupcard
+  - coinWeapon
   layers:
   - Default
   - TransparentFX

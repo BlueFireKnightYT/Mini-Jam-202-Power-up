@@ -16,7 +16,11 @@ public abstract class PowerupCard : ScriptableObject
     public Sprite cardSprite;
     public Sprite inventorySprite;
     public CardType type;
-    public float projectileAmount;
-    public float projectileSpeed;
-    public bool isSpecialAbility;
+    public int projectileAmount;
+    public int retryAmount;
+
+    public virtual void onActivate(Vector2 center)
+    {
+
+    }
 }
