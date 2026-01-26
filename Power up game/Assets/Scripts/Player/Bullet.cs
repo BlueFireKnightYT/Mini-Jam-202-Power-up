@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
     public bool isHoming;
     public float homingSpeed;
     public Vector2 homingDirection;
+    public Vector2 currentDirecton;
     public GameObject closestEnemy;
     float angle;
 
@@ -32,16 +33,17 @@ public class Bullet : MonoBehaviour
         playerShooting = playerObj.GetComponent<PlayerShooting>();
         particles = GetComponent<ParticleSystem>();
         sr = GetComponent<SpriteRenderer>();
+        currentDirecton = transform.up;
 
         if (isHoming)
         {
-            InvokeRepeating("UpdateHoming", homingSpeed, homingSpeed);
+            InvokeRepeating("UpdateHoming", 0, 0.1f);
         }
     }
 
     void UpdateHoming()
     {
-        RaycastHit2D[] rayCollider = Physics2D.CircleCastAll(transform.position, 5, Vector2.down, 0f);
+        RaycastHit2D[] rayCollider = Physics2D.CircleCastAll(transform.position, 10, Vector2.down, 0f);
         float minDistance = Mathf.Infinity;
         
         foreach(RaycastHit2D hit in rayCollider)
@@ -82,7 +84,9 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            bulletRb.linearVelocity = homingDirection * bulletSpeed;
+            currentDirecton.x = Mathf.MoveTowards(currentDirecton.x, homingDirection.x, homingSpeed);
+            currentDirecton.y = Mathf.MoveTowards(currentDirecton.y, homingDirection.y, homingSpeed);
+            bulletRb.linearVelocity = currentDirecton * bulletSpeed;
             if(closestEnemy != null)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
