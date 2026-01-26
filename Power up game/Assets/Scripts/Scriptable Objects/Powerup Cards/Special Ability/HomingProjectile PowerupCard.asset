@@ -19,4 +19,4 @@ MonoBehaviour:
   type: 0
   projectileAmount: 1
   retryAmount: 0
-  homingAccuracy: 0.2
+  homingAccuracy: 0.1

@@ -16,3 +16,4 @@ MonoBehaviour:
   weaponSprite: {fileID: -8444840788763433450, guid: b846c7fe37506fc4ca85bca1b5ecbe1c, type: 3}
   projectilePrefab: {fileID: 8462398413584418841, guid: eacf01f245571b3438c0f58da079d476, type: 3}
   projectileForce: 0
+  cooldownTime: 2.5

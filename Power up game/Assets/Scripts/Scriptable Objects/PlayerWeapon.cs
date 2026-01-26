@@ -7,4 +7,5 @@ public class PlayerWeapon : ScriptableObject
     public Sprite weaponSprite;
     public GameObject projectilePrefab;
     public float projectileForce;
+    public float cooldownTime;
 }

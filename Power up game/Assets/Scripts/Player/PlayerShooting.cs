@@ -69,26 +69,11 @@ public class PlayerShooting : MonoBehaviour
     {
         if (canShoot && shooting)
         {
-            if(bulletPrefab.GetComponent<Bullet>() != null)
-            {
                 shotCardAmount = 0;
                 canShoot = false;
-                neededTime = cooldown;
+                neededTime = weapons[currentWeapon].cooldownTime;
                 InvokeRepeating("ShootCardWrapper", 0, 0.1f);
-            }
-            else if (bulletPrefab.GetComponent<CoinProjectile>() != null)
-            {
-                neededTime = cooldown -0.2f;
-                canShoot = false;
-                Invoke("ShootCoin", 0f);
-            }
-            else  if (bulletPrefab.GetComponent<SlotBullet>() != null)
-            {
-                int slotGunCooldown = 2;
-                neededTime = slotGunCooldown;
-                canShoot = false;
-                Invoke("ShootSlot", 0);
-            }
+            
         }
         if(shotCardAmount >= cardAmount)
         {
@@ -111,9 +96,10 @@ public class PlayerShooting : MonoBehaviour
     }
     public void ShootCard(Vector2 position, Quaternion rotation)
     {
-            GameObject projectile = Instantiate(bulletPrefab, position, rotation);
-            shotCardAmount++;
-            projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
+        GameObject projectile = Instantiate(bulletPrefab, position, rotation);
+        shotCardAmount++;
+        lastProjectile = projectile;
+        projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
         if (explosiveBullets)
         {
             Bullet bulletScript = projectile.GetComponent<Bullet>();
