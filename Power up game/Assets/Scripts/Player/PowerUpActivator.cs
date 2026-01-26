@@ -40,6 +40,7 @@ public class PowerUpActivator : MonoBehaviour
         {
             ableToPowerUp = false;
             powerUpActive = true;
+            hpSys.hp -= (hpSys.neededHp - 5);
             UIPowered.color = Color.yellow;
             if(slot1.cardInSlot != null)
             {
@@ -79,6 +80,7 @@ public class PowerUpActivator : MonoBehaviour
         CardIdentifier cI = slot1.cardInSlot.GetComponent<CardIdentifier>();
         cI.card.onActivate(transform.position, playerShooting.weapons[playerShooting.currentWeapon].projectilePrefab);
         cI.card.EnableExplosiveBullets(true);
+        cI.card.EnableHomingProjectiles(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
         uiCards.SpinCard1();
     }
@@ -86,6 +88,7 @@ public class PowerUpActivator : MonoBehaviour
     {
         CardIdentifier cI = slot1.cardInSlot.GetComponent<CardIdentifier>();
         cI.card.EnableExplosiveBullets(false);
+        cI.card.EnableHomingProjectiles(false);
         playerShooting.cardAmount /= cI.card.projectileAmount;
     }
     public void Slot2Ability()
@@ -93,6 +96,7 @@ public class PowerUpActivator : MonoBehaviour
         CardIdentifier cI = slot2.cardInSlot.GetComponent<CardIdentifier>();
         cI.card.onActivate(transform.position, playerShooting.weapons[playerShooting.currentWeapon].projectilePrefab);
         cI.card.EnableExplosiveBullets(true);
+        cI.card.EnableHomingProjectiles(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
         if (cI.card.retryAmount > 0)
         {
@@ -108,6 +112,7 @@ public class PowerUpActivator : MonoBehaviour
         CardIdentifier cI = slot2.cardInSlot.GetComponent<CardIdentifier>();
         playerShooting.cardAmount /= cI.card.projectileAmount;
         cI.card.EnableExplosiveBullets(false);
+        cI.card.EnableHomingProjectiles(false);
         if (cI.card.retryAmount > 0)
         {
             for (int i = 0; i < cI.card.retryAmount; i++)
@@ -122,6 +127,7 @@ public class PowerUpActivator : MonoBehaviour
         CardIdentifier cI = slot3.cardInSlot.GetComponent<CardIdentifier>();
         cI.card.onActivate(transform.position, playerShooting.weapons[playerShooting.currentWeapon].projectilePrefab);
         cI.card.EnableExplosiveBullets(true);
+        cI.card.EnableHomingProjectiles(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
         if (cI.card.retryAmount > 0)
         {
@@ -137,6 +143,7 @@ public class PowerUpActivator : MonoBehaviour
         CardIdentifier cI = slot3.cardInSlot.GetComponent<CardIdentifier>();
         playerShooting.cardAmount /= cI.card.projectileAmount;
         cI.card.EnableExplosiveBullets(false);
+        cI.card.EnableHomingProjectiles(false);
         if (cI.card.retryAmount > 0)
         {
             for (int i = 0; i < cI.card.retryAmount; i++)

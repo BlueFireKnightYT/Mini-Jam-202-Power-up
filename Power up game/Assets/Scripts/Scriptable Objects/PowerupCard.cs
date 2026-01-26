@@ -27,4 +27,9 @@ public abstract class PowerupCard : ScriptableObject
     {
 
     }
+
+    public virtual void EnableHomingProjectiles(bool enable)
+    {
+
+    }
 }

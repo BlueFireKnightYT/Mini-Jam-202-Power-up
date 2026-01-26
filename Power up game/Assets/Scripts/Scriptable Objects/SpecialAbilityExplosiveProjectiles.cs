@@ -5,10 +5,12 @@ public class SpecialAbilityExplosiveProjectiles : PowerupCard
 {
     public GameObject projectilePrefab;
     public GameObject explosionPrefab;
+    public float explosionRadius;
 
     public override void EnableExplosiveBullets(bool enable)
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("player");
         playerObj.GetComponent<PlayerShooting>().explosiveBullets = enable;
+        playerObj.GetComponent<PlayerShooting>().explosionRadius = explosionRadius;
     }
 }

@@ -15,7 +15,7 @@ public class SpecialAbilityPowerupCard : PowerupCard
             Vector2 spawnPos = center + new Vector2(x, y);
             Quaternion rotation = Quaternion.identity;
             rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
-            GameObject projectile = Instantiate(projectilePrefab, spawnPos, rotation);
+            GameObject.FindGameObjectWithTag("player").GetComponent<PlayerShooting>().ShootCard(spawnPos, rotation);
         }
     }
 }

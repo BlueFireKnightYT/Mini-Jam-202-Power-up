@@ -30,8 +30,14 @@ public class PlayerShooting : MonoBehaviour
 
     public GameObject projectile;
 
+    [Header("Explosion Attributes")]
     public bool explosiveBullets;
     public GameObject explosionPrefab;
+    public float explosionRadius;
+
+    [Header("Homing Attributes")]
+    public bool isHoming;
+    public float homingSpeed;
 
     public GameObject lastProjectile;
     private void Start()
@@ -68,7 +74,7 @@ public class PlayerShooting : MonoBehaviour
                 shotCardAmount = 0;
                 canShoot = false;
                 neededTime = cooldown;
-                InvokeRepeating("ShootCard", 0, 0.1f);
+                InvokeRepeating("ShootCardWrapper", 0, 0.1f);
             }
             else if (bulletPrefab.GetComponent<CoinProjectile>() != null)
             {
@@ -86,7 +92,7 @@ public class PlayerShooting : MonoBehaviour
         }
         if(shotCardAmount >= cardAmount)
         {
-            CancelInvoke("ShootCard");
+            CancelInvoke("ShootCardWrapper");
         }
 
         if (neededTime > 0)
@@ -99,15 +105,27 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    void ShootCard()
+    void ShootCardWrapper()
     {
-            GameObject projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
+        ShootCard(cardPos.position, cardPos.rotation);
+    }
+    public void ShootCard(Vector2 position, Quaternion rotation)
+    {
+            GameObject projectile = Instantiate(bulletPrefab, position, rotation);
             shotCardAmount++;
             projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
         if (explosiveBullets)
         {
-            projectile.GetComponent<Bullet>().canExplode = true;
-            projectile.GetComponent<Bullet>().explosionPrefab = explosionPrefab;
+            Bullet bulletScript = projectile.GetComponent<Bullet>();
+            bulletScript.canExplode = true;
+            bulletScript.explosionPrefab = explosionPrefab;
+            bulletScript.explosionRadius = explosionRadius;
+
+        }
+        if (isHoming)
+        {
+            projectile.GetComponent<Bullet>().isHoming = true;
+            projectile.GetComponent<Bullet>().homingSpeed = homingSpeed;
         }
     }
 

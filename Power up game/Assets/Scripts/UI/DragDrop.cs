@@ -46,8 +46,11 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
         inSlot = false;
-        currentSlot.GetComponent<ItemSlot>().cardInSlot = null;
-        currentSlot = null;
+        if(currentSlot != null)
+        {
+            currentSlot.GetComponent<ItemSlot>().cardInSlot = null;
+            currentSlot = null;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)

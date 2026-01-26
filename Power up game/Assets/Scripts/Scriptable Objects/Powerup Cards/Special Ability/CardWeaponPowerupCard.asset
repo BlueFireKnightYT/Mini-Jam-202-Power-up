@@ -21,3 +21,4 @@ MonoBehaviour:
   retryAmount: 0
   projectilePrefab: {fileID: 0}
   explosionPrefab: {fileID: 0}
+  explosionRadius: 3

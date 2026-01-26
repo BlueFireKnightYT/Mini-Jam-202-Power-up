@@ -60,7 +60,6 @@ public class SpawnEnemies : MonoBehaviour
             if (baseNeededTime > 0.5f)
             {
                 baseNeededTime = baseNeededTime / 100 * 95;
-                Debug.Log(baseNeededTime);
             }
             else if (baseNeededTime <= 0.5f)
             {
