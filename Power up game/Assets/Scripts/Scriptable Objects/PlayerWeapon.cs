@@ -8,4 +8,5 @@ public class PlayerWeapon : ScriptableObject
     public GameObject projectilePrefab;
     public float projectileForce;
     public float cooldownTime;
+    public float damage;
 }

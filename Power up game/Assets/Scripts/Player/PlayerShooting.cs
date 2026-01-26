@@ -99,6 +99,9 @@ public class PlayerShooting : MonoBehaviour
         GameObject projectile = Instantiate(bulletPrefab, position, rotation);
         shotCardAmount++;
         lastProjectile = projectile;
+        projectile.GetComponent<Bullet>().damage = weapons[currentWeapon].damage;
+        if(projectile.GetComponent<>)
+        projectile.GetComponent<Bullet>().isCoin = weapons[currentWeapon].isCoin;
         projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
         if (explosiveBullets)
         {
