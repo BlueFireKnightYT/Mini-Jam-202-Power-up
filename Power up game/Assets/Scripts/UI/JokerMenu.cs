@@ -109,7 +109,7 @@ public class JokerMenu : MonoBehaviour
         else if (upgradeSlot == 4)
         {
             cardBulletPrefab.GetComponent<Bullet>().lifestealAmount += 1;
-            coinBulletPrefab.GetComponent<CoinProjectile>().lifestealAmount += 3;
+            coinBulletPrefab.GetComponent<Bullet>().lifestealAmount += 3;
         }
         else if (upgradeSlot == 5)
         {

@@ -628,7 +628,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: fb2ad04d0ca2cf545967f352e3f21c0d, type: 2}
     - target: {fileID: 6653357021561577643, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7105441487913533347, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: cam
@@ -3160,7 +3160,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a7741ab7de028e0418b09601d3669cb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

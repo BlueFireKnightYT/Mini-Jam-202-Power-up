@@ -9,4 +9,7 @@ public class PlayerWeapon : ScriptableObject
     public float projectileForce;
     public float cooldownTime;
     public float damage;
+    public bool gravityEnabled;
+    public bool willDisappear;
+    public float disappearTime;
 }

@@ -26,7 +26,7 @@ public class SlotBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.CompareTag("enemy"))
         {
             EnemyBehaviour enemyScript = collision.gameObject.GetComponent<EnemyBehaviour>();
             enemyScript.DamageTakenText(Damage);

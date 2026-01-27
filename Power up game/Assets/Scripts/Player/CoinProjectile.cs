@@ -12,20 +12,18 @@ public class CoinProjectile : MonoBehaviour
     public bool beenHit;
     public bool isLastProjectile;
     bool finalShot;
-    public float baseDamage;
-    public int lifestealAmount;
-    float damage;
     float minDistance;
     Vector2 nextCoinPos;
     GameObject nextCoin;
     GameObject closestEnemy;
     GameObject lineObj;
-    void Start()
+
+    Bullet bulletScript;
+    private void Start()
     {
+        bulletScript = GetComponent<Bullet>();
         rb = GetComponent<Rigidbody2D>();
         ps = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerShooting>();
-        rb.AddForce(transform.up * 5, ForceMode2D.Impulse);
-        damage = baseDamage;
     }
 
     void FixedUpdate()
@@ -41,15 +39,15 @@ public class CoinProjectile : MonoBehaviour
             {
                 Destroy(this.gameObject);
                 collision.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
-                collision.GetComponent<CoinProjectile>().damage += damage;
-                collision.GetComponent<CoinProjectile>().lifestealAmount += lifestealAmount;
+                collision.GetComponent<Bullet>().damage += bulletScript.damage;
+                collision.GetComponent<Bullet>().lifestealAmount += bulletScript.lifestealAmount;
             }
         }
         if (collision.CompareTag("enemy") == true)
         {
             EnemyBehaviour enemyScript = collision.gameObject.GetComponent<EnemyBehaviour>();
-            enemyScript.enemyHealth -= damage;
-            enemyScript.DamageTakenText(damage);
+            enemyScript.enemyHealth -= bulletScript.damage;
+            enemyScript.DamageTakenText(bulletScript.damage);
             Destroy(this.gameObject);
         }
     }
@@ -101,9 +99,9 @@ public class CoinProjectile : MonoBehaviour
             if(closestEnemy != null)
             {
                 EnemyBehaviour behaviour = closestEnemy.GetComponent<EnemyBehaviour>();
-                behaviour.enemyHealth -= damage;
-                behaviour.DamageTakenText(damage);
-                ps.DoLifesteal(lifestealAmount);
+                behaviour.enemyHealth -= bulletScript.damage;
+                behaviour.DamageTakenText(bulletScript.damage);
+                ps.DoLifesteal(bulletScript.lifestealAmount);
                 DrawEnemyLine(closestEnemy.transform.position);
             }
             Destroy(this.gameObject, lineDuration);
@@ -128,8 +126,8 @@ public class CoinProjectile : MonoBehaviour
         if (nextCoin != null)
         {
             nextCoin.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
-            nextCoin.GetComponent<CoinProjectile>().damage += damage;
-            nextCoin.GetComponent<CoinProjectile>().lifestealAmount += lifestealAmount;
+            nextCoin.GetComponent<CoinProjectile>().bulletScript.damage += bulletScript.damage;
+            nextCoin.GetComponent<Bullet>().lifestealAmount += bulletScript.lifestealAmount;
         }
         Destroy(lineObj);
         Destroy(this.gameObject);

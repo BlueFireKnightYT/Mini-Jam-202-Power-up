@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -100,8 +101,6 @@ public class PlayerShooting : MonoBehaviour
         shotCardAmount++;
         lastProjectile = projectile;
         projectile.GetComponent<Bullet>().damage = weapons[currentWeapon].damage;
-        if(projectile.GetComponent<>)
-        projectile.GetComponent<Bullet>().isCoin = weapons[currentWeapon].isCoin;
         projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
         if (explosiveBullets)
         {
@@ -116,13 +115,10 @@ public class PlayerShooting : MonoBehaviour
             projectile.GetComponent<Bullet>().isHoming = true;
             projectile.GetComponent<Bullet>().homingSpeed = homingSpeed;
         }
-    }
-
-    void ShootCoin()
-    {
-        projectile = Instantiate(bulletPrefab, cardPos.position, cardPos.rotation);
-        lastProjectile = projectile;
-        projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
+        if (weapons[currentWeapon].gravityEnabled)
+        {
+            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.transform.up * weapons[currentWeapon].projectileForce, ForceMode2D.Impulse);
+        }
     }
 
     void ShootSlot()
