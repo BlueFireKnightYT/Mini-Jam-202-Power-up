@@ -13,6 +13,9 @@ public class HpSystem : MonoBehaviour
     public bool inPauseMenu = false;
     public Slider hpSlider;
     public Slider shieldSlider;
+    public InventoryEnabler invEnabler;
+    public PowerUpActivator powerUpActivator;
+    public GameObject inventory;
 
     public GameObject pauseMenu;
 
@@ -42,11 +45,19 @@ public class HpSystem : MonoBehaviour
     {
         if (context.performed && inPauseMenu == false)
         {
-            // open pause menu en time stop
-            Time.timeScale = 0;
-            inPauseMenu = true;
-            pauseMenu.SetActive(true);
-
+            if (invEnabler.inInv)
+            {
+                inventory.SetActive(false);
+                powerUpActivator.powerUpEnabled = true;
+                Time.timeScale = 1;
+                invEnabler.inInv = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                inPauseMenu = true;
+                pauseMenu.SetActive(true);
+            }
         }
         else if (context.performed && inPauseMenu == true)
         {

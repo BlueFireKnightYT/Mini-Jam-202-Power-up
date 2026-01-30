@@ -555,13 +555,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2140915970}
     - target: {fileID: 3688112732473469382, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 957746237}
+    - target: {fileID: 3688112732473469382, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 686535397}
     - target: {fileID: 3688112732473469382, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: invEnabler
+      value: 
+      objectReference: {fileID: 957746242}
+    - target: {fileID: 3688112732473469382, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: shieldSlider
       value: 
       objectReference: {fileID: 1188940356}
+    - target: {fileID: 3688112732473469382, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
+      propertyPath: powerUpActivator
+      value: 
+      objectReference: {fileID: 557838}
     - target: {fileID: 5269077499305534381, guid: 4091dd7107f8f4143a084e6ed4b95693, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1819,7 +1831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -120.99997, y: 375}
+  m_AnchoredPosition: {x: -121, y: 375}
   m_SizeDelta: {x: 280, y: 160}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &844802961
@@ -2039,6 +2051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   pUA: {fileID: 557838}
+  inInv: 0
 --- !u!1001 &982177104
 PrefabInstance:
   m_ObjectHideFlags: 0
