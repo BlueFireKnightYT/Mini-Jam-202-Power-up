@@ -70,9 +70,9 @@ public class PowerUpActivator : MonoBehaviour
     {
         powerUpActive = false;
         UIPowered.color = Color.grey;
-        StopSlot1Ability();
-        StopSlot2Ability();
-        StopSlot3Ability();
+        if (slot1.cardInSlot != null) StopSlot1Ability();
+        if (slot2.cardInSlot != null) StopSlot2Ability();
+        if (slot3.cardInSlot != null) StopSlot3Ability();
     }
 
     public void Slot1Ability()
@@ -82,6 +82,12 @@ public class PowerUpActivator : MonoBehaviour
         cI.card.EnableExplosiveBullets(true);
         cI.card.EnableHomingProjectiles(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
+        playerShooting.damage *= cI.card.damageMultiplier;
+        playerShooting.projectileSizeMultiplier *= cI.card.projectileSize;
+        playerShooting.projectileSpeedMultiplier *= cI.card.projectileForceMultiplier;
+        if (cI.card.chaoticMovement) playerShooting.isChaotic = true;
+        if(cI.card.isBoomerang) playerShooting.isBoomerang = true;
+        if(cI.card.isOrbit) playerShooting.isOrbit = true;
         uiCards.SpinCard1();
     }
     public void StopSlot1Ability()
@@ -90,6 +96,12 @@ public class PowerUpActivator : MonoBehaviour
         cI.card.EnableExplosiveBullets(false);
         cI.card.EnableHomingProjectiles(false);
         playerShooting.cardAmount /= cI.card.projectileAmount;
+        playerShooting.damage /= cI.card.damageMultiplier;
+        playerShooting.projectileSizeMultiplier /= cI.card.projectileSize;
+        playerShooting.projectileSpeedMultiplier /= cI.card.projectileForceMultiplier;
+        playerShooting.isChaotic = false;
+        playerShooting.isBoomerang = false;
+        playerShooting.isOrbit = false;
     }
     public void Slot2Ability()
     {
@@ -98,6 +110,12 @@ public class PowerUpActivator : MonoBehaviour
         cI.card.EnableExplosiveBullets(true);
         cI.card.EnableHomingProjectiles(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
+        playerShooting.damage *= cI.card.damageMultiplier;
+        playerShooting.projectileSizeMultiplier *= cI.card.projectileSize;
+        playerShooting.projectileSpeedMultiplier *= cI.card.projectileForceMultiplier;
+        if (cI.card.chaoticMovement) playerShooting.isChaotic = true;
+        if (cI.card.isBoomerang) playerShooting.isBoomerang = true;
+        if (cI.card.isOrbit) playerShooting.isOrbit = true;
         if (cI.card.retryAmount > 0)
         {
             for (int i = 0; i < cI.card.retryAmount; i++)
@@ -113,6 +131,12 @@ public class PowerUpActivator : MonoBehaviour
         playerShooting.cardAmount /= cI.card.projectileAmount;
         cI.card.EnableExplosiveBullets(false);
         cI.card.EnableHomingProjectiles(false);
+        playerShooting.damage /= cI.card.damageMultiplier;
+        playerShooting.projectileSizeMultiplier /= cI.card.projectileSize;
+        playerShooting.projectileSpeedMultiplier /= cI.card.projectileForceMultiplier;
+        playerShooting.isChaotic = false;
+        playerShooting.isBoomerang = false;
+        playerShooting.isOrbit = false;
         if (cI.card.retryAmount > 0)
         {
             for (int i = 0; i < cI.card.retryAmount; i++)
@@ -129,6 +153,12 @@ public class PowerUpActivator : MonoBehaviour
         cI.card.EnableExplosiveBullets(true);
         cI.card.EnableHomingProjectiles(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
+        playerShooting.damage *= cI.card.damageMultiplier;
+        playerShooting.projectileSizeMultiplier *= cI.card.projectileSize;
+        playerShooting.projectileSpeedMultiplier *= cI.card.projectileForceMultiplier;
+        if (cI.card.chaoticMovement) playerShooting.isChaotic = true;
+        if (cI.card.isBoomerang) playerShooting.isBoomerang = true;
+        if (cI.card.isOrbit) playerShooting.isOrbit = true;
         if (cI.card.retryAmount > 0)
         {
             for (int i = 0; i < cI.card.retryAmount; i++)
@@ -142,8 +172,14 @@ public class PowerUpActivator : MonoBehaviour
     {
         CardIdentifier cI = slot3.cardInSlot.GetComponent<CardIdentifier>();
         playerShooting.cardAmount /= cI.card.projectileAmount;
+        playerShooting.damage /= cI.card.damageMultiplier;
+        playerShooting.projectileSizeMultiplier /= cI.card.projectileSize;
+        playerShooting.projectileSpeedMultiplier /= cI.card.projectileForceMultiplier;
         cI.card.EnableExplosiveBullets(false);
         cI.card.EnableHomingProjectiles(false);
+        playerShooting.isChaotic = false;
+        playerShooting.isBoomerang = false;
+        playerShooting.isOrbit = false;
         if (cI.card.retryAmount > 0)
         {
             for (int i = 0; i < cI.card.retryAmount; i++)

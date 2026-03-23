@@ -17,3 +17,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8379585933943714111, guid: 01e38c131271ede41ac7c203f781a991, type: 3}
   projectileForce: 0
   cooldownTime: 1
+  damage: 40
+  gravityEnabled: 0
+  willDisappear: 1
+  disappearTime: 3

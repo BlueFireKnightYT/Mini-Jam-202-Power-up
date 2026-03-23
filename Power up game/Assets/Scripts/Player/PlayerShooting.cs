@@ -31,6 +31,10 @@ public class PlayerShooting : MonoBehaviour
 
     public GameObject projectile;
 
+    [Header("Projectile Attributes")]
+    public float projectileSizeMultiplier = 1;
+    public float projectileSpeedMultiplier = 1;
+
     [Header("Explosion Attributes")]
     public bool explosiveBullets;
     public GameObject explosionPrefab;
@@ -39,6 +43,11 @@ public class PlayerShooting : MonoBehaviour
     [Header("Homing Attributes")]
     public bool isHoming;
     public float homingSpeed;
+
+    [Header("Direction Attributes")]
+    public bool isBoomerang;
+    public bool isChaotic;
+    public bool isOrbit;
 
     public GameObject lastProjectile;
     private void Start()
@@ -100,7 +109,10 @@ public class PlayerShooting : MonoBehaviour
         GameObject projectile = Instantiate(bulletPrefab, position, rotation);
         shotCardAmount++;
         lastProjectile = projectile;
-        projectile.GetComponent<Bullet>().damage = weapons[currentWeapon].damage;
+        Bullet bullet = projectile.GetComponent<Bullet>();
+        bullet.damage = weapons[currentWeapon].damage;
+        bullet.speedMultiplier = projectileSpeedMultiplier;
+        bullet.sizeMultiplier = projectileSizeMultiplier;
         projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
         if (explosiveBullets)
         {
@@ -118,6 +130,18 @@ public class PlayerShooting : MonoBehaviour
         if (weapons[currentWeapon].gravityEnabled)
         {
             projectile.GetComponent<Rigidbody2D>().AddForce(projectile.transform.up * weapons[currentWeapon].projectileForce, ForceMode2D.Impulse);
+        }
+        if (isBoomerang)
+        {
+            projectile.GetComponent<Bullet>().isBoomerang = true; 
+        }
+        if (isChaotic)
+        {
+            projectile.GetComponent<Bullet>().isChaotic = true;
+        }
+        if (isOrbit)
+        {
+            projectile.GetComponent<Bullet>().isOrbit = true;
         }
     }
 

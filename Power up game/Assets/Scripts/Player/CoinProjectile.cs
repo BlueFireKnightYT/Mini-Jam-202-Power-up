@@ -43,13 +43,6 @@ public class CoinProjectile : MonoBehaviour
                 collision.GetComponent<Bullet>().lifestealAmount += bulletScript.lifestealAmount;
             }
         }
-        if (collision.CompareTag("enemy") == true)
-        {
-            EnemyBehaviour enemyScript = collision.gameObject.GetComponent<EnemyBehaviour>();
-            enemyScript.enemyHealth -= bulletScript.damage;
-            enemyScript.DamageTakenText(bulletScript.damage);
-            Destroy(this.gameObject);
-        }
     }
 
     public void CheckNextCoin()

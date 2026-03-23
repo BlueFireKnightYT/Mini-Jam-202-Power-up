@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc4884f0afd88f4e8a16c86b48e0c80, type: 3}
+  m_Name: CardWeaponPowerupCardBoomerang
+  m_EditorClassIdentifier: Assembly-CSharp::CardWeaponPC
+  cardName: Boomerang Projectiles!
+  cardDescription: Makes your projectiles come back like a boomerang!
+  cardSprite: {fileID: -1893177567338268850, guid: 6847ad0131bd7eb408a50301ad9cc9cd, type: 3}
+  inventorySprite: {fileID: -1893177567338268850, guid: 6847ad0131bd7eb408a50301ad9cc9cd, type: 3}
+  type: 0
+  projectileAmount: 1
+  retryAmount: 0
+  damageMultiplier: 1
+  projectileSize: 1
+  projectileForceMultiplier: 1
+  isBoomerang: 1
+  chaoticMovement: 0
+  isOrbit: 0

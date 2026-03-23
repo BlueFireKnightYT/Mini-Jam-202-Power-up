@@ -181,10 +181,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618e7d2e8a60bce42b351d89f39debdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  bulletSpeed: 10
   lifestealAmount: 3
+  damage: 0
+  bulletSpeed: 10
+  speedMultiplier: 1
+  sizeMultiplier: 1
+  damageMultiplier: 1
+  equippedWeapon: {fileID: 0}
   canExplode: 0
   explosionPrefab: {fileID: 0}
+  explosionRadius: 0
+  isHoming: 0
+  homingSpeed: 0
+  homingDirection: {x: 0, y: 0}
+  currentDirecton: {x: 0, y: 0}
+  closeEnemy: {fileID: 0}
+  isBoomerang: 0
+  isChaotic: 0
 --- !u!198 &4169732874873866902
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Movement : MonoBehaviour
 {
@@ -10,11 +11,16 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     Vector2 input;
+    bool inInteractableRange;
+    public GameObject UIChipPrefab;
+    public GameObject chipsParent;
     public float baseSpeed;
     public float speed = 5f;
     public Transform weaponRotate;
     public GameObject jokerMenu;
     public PlayerWeapon[] everyWeapon;
+
+    public GameObject rouletteMenu;
 
     InputAction lookAt;
     PlayerInput PlayerInput;
@@ -30,7 +36,6 @@ public class Movement : MonoBehaviour
         lookAt = PlayerInput.actions.FindAction("LookAt");
         jokerMenu.SetActive(false);
         Time.timeScale = 1;
-
     }
 
     private void FixedUpdate()
@@ -48,7 +53,20 @@ public class Movement : MonoBehaviour
         input = context.ReadValue<Vector2>();
     }
 
-
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (inInteractableRange)
+        {
+            if (!rouletteMenu.activeSelf)
+            {
+                rouletteMenu.SetActive(true);
+            }
+            else
+            {
+                rouletteMenu.SetActive(false);
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -65,9 +83,21 @@ public class Movement : MonoBehaviour
                 if (weapon.weaponName == "Coin")
                 {
                     playerShooting.weapons.Add(weapon);
+                    GameObject UIChip = Instantiate(UIChipPrefab, chipsParent.transform);
                     Destroy(collision.gameObject);
                 }
             }
+        }
+        if(collision.CompareTag("roulette") == true)
+        {
+            inInteractableRange = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (inInteractableRange)
+        {
+            inInteractableRange = false;
         }
     }
 }

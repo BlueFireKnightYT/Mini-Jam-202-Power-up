@@ -14,6 +14,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public bool isUnlocked = false;
 
     public bool inSlot = false;
+
+    public bool isChip = false;
     private void Start()
     {
         pos = rectTransform.anchoredPosition;

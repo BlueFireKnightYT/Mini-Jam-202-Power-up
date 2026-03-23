@@ -18,6 +18,12 @@ public abstract class PowerupCard : ScriptableObject
     public CardType type;
     public int projectileAmount = 1;
     public int retryAmount;
+    public float damageMultiplier = 1;
+    public float projectileSize = 1;
+    public float projectileForceMultiplier = 1;
+    public bool isBoomerang;
+    public bool chaoticMovement;
+    public bool isOrbit;
 
     public virtual void onActivate(Vector2 center, GameObject projectilePrefab)
     {
