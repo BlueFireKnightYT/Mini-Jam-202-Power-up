@@ -19,7 +19,7 @@ public class PlayerShooting : MonoBehaviour
     bool canShoot = true;
     bool shooting = false;
     public float damage;
-    public float baseDamage;
+    public float damageMultiplier;
     public int cardAmount;
     private int shotCardAmount;
     public int baseCardAmount;
@@ -49,13 +49,16 @@ public class PlayerShooting : MonoBehaviour
     public bool isChaotic;
     public bool isOrbit;
 
+    [Header("Chip Stuff")]
+    public int chipCount;
+    public ChipWeapon[] chipWeapons = new ChipWeapon[3];
+
     public GameObject lastProjectile;
     private void Start()
     {
         m = GetComponent<Movement>();
         lvlSys = GetComponent<LevelSystem>();
         rb = GetComponent<Rigidbody2D>();
-        baseDamage = damage;
         baseCooldown = cooldown;
         baseCardAmount = cardAmount;
         basePierceAmount = pierceAmount;
@@ -79,11 +82,19 @@ public class PlayerShooting : MonoBehaviour
     {
         if (canShoot && shooting)
         {
+            if (weapons[currentWeapon].weaponName == "Card")
+            {
                 shotCardAmount = 0;
-                canShoot = false;
-                neededTime = weapons[currentWeapon].cooldownTime;
                 InvokeRepeating("ShootCardWrapper", 0, 0.1f);
-            
+            }
+            if (weapons[currentWeapon].weaponName == "Coin")
+            {
+                Invoke("ShootChipWrapper", 0f);
+                Invoke("ShootChipWrapper", 0.4f);
+                Invoke("ShootChipWrapper", 0.8f);
+            }
+            canShoot = false;
+            neededTime = weapons[currentWeapon].cooldownTime;
         }
         if(shotCardAmount >= cardAmount)
         {
@@ -109,42 +120,68 @@ public class PlayerShooting : MonoBehaviour
         GameObject projectile = Instantiate(bulletPrefab, position, rotation);
         shotCardAmount++;
         lastProjectile = projectile;
-        Bullet bullet = projectile.GetComponent<Bullet>();
-        bullet.damage = weapons[currentWeapon].damage;
-        bullet.speedMultiplier = projectileSpeedMultiplier;
-        bullet.sizeMultiplier = projectileSizeMultiplier;
         projectile.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
-        if (explosiveBullets)
+        Bullet bullet = projectile.GetComponent<Bullet>();
+        if (bullet != null)
         {
-            Bullet bulletScript = projectile.GetComponent<Bullet>();
-            bulletScript.canExplode = true;
-            bulletScript.explosionPrefab = explosionPrefab;
-            bulletScript.explosionRadius = explosionRadius;
+            bullet.damage = damage;
+            bullet.damageMultiplier = damageMultiplier;
+            bullet.speedMultiplier = projectileSpeedMultiplier;
+            bullet.sizeMultiplier = projectileSizeMultiplier;
+            if (explosiveBullets)
+            {
+                Bullet bulletScript = projectile.GetComponent<Bullet>();
+                bulletScript.canExplode = true;
+                bulletScript.explosionPrefab = explosionPrefab;
+                bulletScript.explosionRadius = explosionRadius;
 
-        }
-        if (isHoming)
-        {
-            projectile.GetComponent<Bullet>().isHoming = true;
-            projectile.GetComponent<Bullet>().homingSpeed = homingSpeed;
-        }
-        if (weapons[currentWeapon].gravityEnabled)
-        {
-            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.transform.up * weapons[currentWeapon].projectileForce, ForceMode2D.Impulse);
-        }
-        if (isBoomerang)
-        {
-            projectile.GetComponent<Bullet>().isBoomerang = true; 
-        }
-        if (isChaotic)
-        {
-            projectile.GetComponent<Bullet>().isChaotic = true;
-        }
-        if (isOrbit)
-        {
-            projectile.GetComponent<Bullet>().isOrbit = true;
+            }
+            if (isHoming)
+            {
+                projectile.GetComponent<Bullet>().isHoming = true;
+                projectile.GetComponent<Bullet>().homingSpeed = homingSpeed;
+            }
+            if (weapons[currentWeapon].gravityEnabled)
+            {
+                projectile.GetComponent<Rigidbody2D>().AddForce(projectile.transform.up * weapons[currentWeapon].projectileForce, ForceMode2D.Impulse);
+            }
+            if (isBoomerang)
+            {
+                projectile.GetComponent<Bullet>().isBoomerang = true;
+            }
+            if (isChaotic)
+            {
+                projectile.GetComponent<Bullet>().isChaotic = true;
+            }
+            if (isOrbit)
+            {
+                projectile.GetComponent<Bullet>().isOrbit = true;
+            }
         }
     }
 
+    void ShootChipWrapper()
+    {
+        ShootChip(cardPos.position, cardPos.rotation);
+    }
+
+    public void ShootChip(Vector2 position, Quaternion rotation)
+    {
+        if(chipCount >= 2)
+        {
+            chipCount = 0;
+        }
+        else
+        {
+            chipCount++;
+        }
+        if (chipWeapons[chipCount] != null)
+        {
+            GameObject chip = Instantiate(chipWeapons[chipCount].chipPrefab, position, rotation);
+            lastProjectile = chip;
+            chip.GetComponent<Rigidbody2D>().AddForce(rb.linearVelocity, ForceMode2D.Impulse);
+        }
+    }
     void ShootSlot()
     {
         int shots = Random.Range(4, 13);

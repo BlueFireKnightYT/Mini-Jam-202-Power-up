@@ -42,6 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
             levelSys.xpCount += 10;
             Destroy(this.gameObject, 0.5f);
             canMove = false;
+            GetComponent<Collider2D>().enabled = false;
             hasDied = true;
         }
     }

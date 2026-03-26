@@ -25,7 +25,7 @@ public class PowerUpActivator : MonoBehaviour
 
     private void Update()
     {
-        if(hpSys.hp > hpSys.neededHp && !powerUpActive)
+        if(hpSys.hp >= hpSys.neededHp && !powerUpActive)
         {
             ableToPowerUp = true;
         }
@@ -40,7 +40,7 @@ public class PowerUpActivator : MonoBehaviour
         {
             ableToPowerUp = false;
             powerUpActive = true;
-            hpSys.hp -= (hpSys.neededHp - 5);
+            hpSys.hp -= (70);
             UIPowered.color = Color.yellow;
             if(slot1.cardInSlot != null)
             {
@@ -82,7 +82,7 @@ public class PowerUpActivator : MonoBehaviour
         cI.card.EnableExplosiveBullets(true);
         cI.card.EnableHomingProjectiles(true);
         playerShooting.cardAmount *= cI.card.projectileAmount;
-        playerShooting.damage *= cI.card.damageMultiplier;
+        playerShooting.damageMultiplier *= cI.card.damageMultiplier;
         playerShooting.projectileSizeMultiplier *= cI.card.projectileSize;
         playerShooting.projectileSpeedMultiplier *= cI.card.projectileForceMultiplier;
         if (cI.card.chaoticMovement) playerShooting.isChaotic = true;
@@ -141,7 +141,7 @@ public class PowerUpActivator : MonoBehaviour
         {
             for (int i = 0; i < cI.card.retryAmount; i++)
             {
-                Invoke("StopSlot1Ability", 0);
+                Invoke("StopSlot1Ability", 5);
             }
         }
         
@@ -184,7 +184,7 @@ public class PowerUpActivator : MonoBehaviour
         {
             for (int i = 0; i < cI.card.retryAmount; i++)
             {
-                Invoke("StopSlot2Ability", 0);
+                Invoke("StopSlot2Ability", 5);
             }
         }
     }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99e60d993bb8874e925148100775a38, type: 3}
-  m_Name: ChipWeaponNormal
+  m_Name: TNTChipWeapon
   m_EditorClassIdentifier: Assembly-CSharp::ChipWeapon
-  chipName: Normal Chip
-  chipSprite: {fileID: 21300000, guid: a7741ab7de028e0418b09601d3669cb5, type: 3}
-  damage: 5
+  chipName: TNT Chip
+  chipSprite: {fileID: 21300000, guid: 205cb7ad8c6305a46b5833c94eb905b6, type: 3}
+  damage: 10
   lifesteal: 5
   speed: 2
-  chipPrefab: {fileID: 8659297588210148732, guid: c6fc2b77d8a71a04593f49af5abdef86, type: 3}
+  chipPrefab: {fileID: 8066419891955228295, guid: 3c780ddab25fbaf4c8647e98f7da4bac, type: 3}

@@ -5,4 +5,8 @@ public class ChipWeapon : ScriptableObject
 {
     public string chipName;
     public Sprite chipSprite;
+    public float damage;
+    public int lifesteal;
+    public float speed;
+    public GameObject chipPrefab;
 }

@@ -94,7 +94,6 @@ public class JokerMenu : MonoBehaviour
         else if (upgradeSlot == 1)
         {
             pShoot.damage++;
-            pShoot.baseDamage++;
         }
         else if (upgradeSlot == 2)
         {

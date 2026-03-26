@@ -98,12 +98,16 @@ public class PowerupChooser : MonoBehaviour
         {
             if (cardgroup.childCount == 0)
             {
-                GameObject UiCard = Instantiate(inventoryCard, cardgroup);
-                CardIdentifier cI = UiCard.GetComponent<CardIdentifier>();
-                cI.cardName = upgradeCard.cardName;
-                cI.card = upgradeCard;
-                UiCard.GetComponent<Image>().sprite = upgradeCard.cardSprite;
-                return;
+                if (cardgroup.GetComponent<CardIdentifier>().card == null || cardgroup.GetComponent<CardIdentifier>().card == upgradeCard)
+                {
+                    GameObject UiCard = Instantiate(inventoryCard, cardgroup);
+                    CardIdentifier cI = UiCard.GetComponent<CardIdentifier>();
+                    cI.cardName = upgradeCard.cardName;
+                    cI.card = upgradeCard;
+                    UiCard.GetComponent<Image>().sprite = upgradeCard.cardSprite;
+                    cardgroup.GetComponent<CardIdentifier>().card = cI.card;
+                    return;
+                }
             }
         }
     }

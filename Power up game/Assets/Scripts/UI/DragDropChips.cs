@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerDownHandler
+public class DragDropChips : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     RectTransform rectTransform;
     Vector2 pos;
@@ -9,24 +9,27 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     Transform originalParent;
     Transform cardsParent;
 
+    GameObject player;
+
+    public ChipWeapon chipAttributes;
+
     public GameObject currentSlot = null;
 
     public bool isUnlocked = false;
 
     public bool inSlot = false;
-
-    public bool isChip = false;
     private void Start()
     {
         pos = rectTransform.anchoredPosition;
         originalParent = transform.parent;
-        cardsParent = transform.parent.parent.parent.parent.parent;
+        cardsParent = transform.parent;
+        player = GameObject.FindGameObjectWithTag("player");
     }
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -37,20 +40,17 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("Pointer Down");
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         transform.SetParent(cardsParent);
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
         inSlot = false;
-        if(currentSlot != null)
+        if (currentSlot != null)
         {
-            currentSlot.GetComponent<ItemSlot>().cardInSlot = null;
+            currentSlot.GetComponent<ItemSlotChips>().cardInSlot = null;
+            currentSlot.GetComponent<ItemSlotChips>().currentChip = null;
+            player.GetComponent<PlayerShooting>().chipWeapons[currentSlot.GetComponent<ItemSlotChips>().chipIndex] = null;
             currentSlot = null;
         }
     }
@@ -64,7 +64,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         if (!inSlot)
         {
             transform.SetParent(originalParent);
-            rectTransform.anchoredPosition = pos; 
+            rectTransform.anchoredPosition = pos;
         }
     }
 }

@@ -82,7 +82,6 @@ public class Movement : MonoBehaviour
             {
                 if (weapon.weaponName == "Coin")
                 {
-                    playerShooting.weapons.Add(weapon);
                     GameObject UIChip = Instantiate(UIChipPrefab, chipsParent.transform);
                     Destroy(collision.gameObject);
                 }
@@ -98,6 +97,7 @@ public class Movement : MonoBehaviour
         if (inInteractableRange)
         {
             inInteractableRange = false;
+            rouletteMenu.SetActive(false);
         }
     }
 }

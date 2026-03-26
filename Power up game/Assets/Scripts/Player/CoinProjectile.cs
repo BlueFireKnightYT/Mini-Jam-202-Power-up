@@ -2,6 +2,7 @@ using System.Dynamic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 public class CoinProjectile : MonoBehaviour
 {
@@ -14,16 +15,23 @@ public class CoinProjectile : MonoBehaviour
     bool finalShot;
     float minDistance;
     Vector2 nextCoinPos;
-    GameObject nextCoin;
-    GameObject closestEnemy;
+    public GameObject nextCoin;
+    public GameObject closestEnemy;
     GameObject lineObj;
+    public ChipWeapon chipAttributes;
+    public float currentDamage;
+    public int currentLifesteal;
 
-    Bullet bulletScript;
+    public event Action onHit;
+    public event Action onRicocchet;
+
     private void Start()
     {
-        bulletScript = GetComponent<Bullet>();
         rb = GetComponent<Rigidbody2D>();
         ps = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerShooting>();
+        rb.AddRelativeForce(Vector2.up * chipAttributes.speed, ForceMode2D.Impulse);
+        currentDamage = chipAttributes.damage;
+        currentLifesteal = chipAttributes.lifesteal;
     }
 
     void FixedUpdate()
@@ -39,8 +47,10 @@ public class CoinProjectile : MonoBehaviour
             {
                 Destroy(this.gameObject);
                 collision.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
-                collision.GetComponent<Bullet>().damage += bulletScript.damage;
-                collision.GetComponent<Bullet>().lifestealAmount += bulletScript.lifestealAmount;
+                collision.GetComponent<CoinProjectile>().currentDamage += currentDamage;
+                collision.GetComponent<CoinProjectile>().currentLifesteal += currentLifesteal;
+                nextCoin = collision.gameObject;
+                onRicocchet?.Invoke();
             }
         }
     }
@@ -51,9 +61,9 @@ public class CoinProjectile : MonoBehaviour
         minDistance = Mathf.Infinity;
         foreach (Collider2D hit in hits)
         {
-            CoinProjectile coin = hit.GetComponent<CoinProjectile>();
             if (hit.gameObject.CompareTag("coin") == true)
             {
+                CoinProjectile coin = hit.GetComponent<CoinProjectile>();
                 if (!coin.beenHit)
                 {
                      if(hit.gameObject != this.gameObject)
@@ -72,6 +82,7 @@ public class CoinProjectile : MonoBehaviour
         if (nextCoin != null && nextCoin.CompareTag("coin"))
         {
             DrawLine(nextCoinPos);
+            onRicocchet?.Invoke();
         }
         if (nextCoin == null)
         {
@@ -92,10 +103,11 @@ public class CoinProjectile : MonoBehaviour
             if(closestEnemy != null)
             {
                 EnemyBehaviour behaviour = closestEnemy.GetComponent<EnemyBehaviour>();
-                behaviour.enemyHealth -= bulletScript.damage;
-                behaviour.DamageTakenText(bulletScript.damage);
-                ps.DoLifesteal(bulletScript.lifestealAmount);
+                behaviour.enemyHealth -= currentDamage;
+                behaviour.DamageTakenText(currentDamage);
+                ps.DoLifesteal(currentLifesteal);
                 DrawEnemyLine(closestEnemy.transform.position);
+                onHit?.Invoke();
             }
             Destroy(this.gameObject, lineDuration);
         }
@@ -119,8 +131,8 @@ public class CoinProjectile : MonoBehaviour
         if (nextCoin != null)
         {
             nextCoin.GetComponent<CoinProjectile>().Invoke("CheckNextCoin", lineDuration);
-            nextCoin.GetComponent<CoinProjectile>().bulletScript.damage += bulletScript.damage;
-            nextCoin.GetComponent<Bullet>().lifestealAmount += bulletScript.lifestealAmount;
+            nextCoin.GetComponent<CoinProjectile>().currentDamage += currentDamage;
+            nextCoin.GetComponent<CoinProjectile>().currentLifesteal += currentLifesteal;
         }
         Destroy(lineObj);
         Destroy(this.gameObject);
