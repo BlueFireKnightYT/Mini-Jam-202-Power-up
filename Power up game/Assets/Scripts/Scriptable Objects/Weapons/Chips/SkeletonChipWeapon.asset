@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99e60d993bb8874e925148100775a38, type: 3}
   m_Name: SkeletonChipWeapon
   m_EditorClassIdentifier: Assembly-CSharp::ChipWeapon
-  chipName: Skeleton
+  chipName: Skeleton Chip
   chipSprite: {fileID: 21300000, guid: 804b50fc6840ef142833d1c9170b5801, type: 3}
   damage: 10
   lifesteal: 5
