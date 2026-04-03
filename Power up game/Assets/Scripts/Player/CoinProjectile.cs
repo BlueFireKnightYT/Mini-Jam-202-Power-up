@@ -22,8 +22,8 @@ public class CoinProjectile : MonoBehaviour
     public float currentDamage;
     public int currentLifesteal;
 
-    public event Action onHit;
-    public event Action onRicocchet;
+    public Action<GameObject> onHit;
+    public Action onRicocchet;
     public List<(GameObject enemy, float distance)> enemyDistances = new List<(GameObject, float)>();
 
     private void Start()
@@ -106,7 +106,7 @@ public class CoinProjectile : MonoBehaviour
                 behaviour.DamageTakenText(currentDamage);
                 ps.DoLifesteal(currentLifesteal);
                 DrawEnemyLine(enemyDistances[0].enemy.transform.position);
-                onHit?.Invoke();
+                onHit?.Invoke(enemyDistances[0].enemy);
             }
             Destroy(this.gameObject, lineDuration);
         }

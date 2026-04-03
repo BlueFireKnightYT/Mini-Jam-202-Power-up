@@ -20,9 +20,9 @@ public class PoisonChip : MonoBehaviour
             chipScript.nextCoin.AddComponent<PoisonChip>();
          }
     }
-    void PoisonEnemy()
+    void PoisonEnemy(GameObject enemy)
     {
-        chipScript.enemyDistances[0].enemy.GetComponent<EnemyBehaviour>().isPoisoned = true;
-        chipScript.enemyDistances[0].enemy.GetComponent<EnemyBehaviour>().StartCoroutine(chipScript.enemyDistances[0].enemy.GetComponent<EnemyBehaviour>().PoisonHandler(5));
+        enemy.GetComponent<EnemyBehaviour>().isPoisoned = true;
+        enemy.GetComponent<EnemyBehaviour>().StartCoroutine(chipScript.enemyDistances[0].enemy.GetComponent<EnemyBehaviour>().PoisonHandler(5));
     }
 }

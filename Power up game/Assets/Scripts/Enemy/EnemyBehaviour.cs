@@ -96,9 +96,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void DamageTakenText(float damageTaken)
     {
-        GameObject damageTextObj = Instantiate(damageText, canvas.transform);
-        TextMeshProUGUI textMesh = damageTextObj.GetComponent<TextMeshProUGUI>();
-        textMesh.text = damageTaken.ToString();
+        if(canvas != null)
+        {
+            GameObject damageTextObj = Instantiate(damageText, canvas.transform);
+            TextMeshProUGUI textMesh = damageTextObj.GetComponent<TextMeshProUGUI>();
+            textMesh.text = damageTaken.ToString();
+        }
     }
 
     public IEnumerator PoisonHandler(float poisonDamage)

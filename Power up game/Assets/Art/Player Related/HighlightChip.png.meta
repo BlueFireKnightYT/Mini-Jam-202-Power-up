@@ -1,0 +1,418 @@
+fileFormatVersion: 2
+guid: 6bb48d9021756e74081ba4a7f5dca28d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7979745924813669285
+    second: HighlightChip_0
+  - first:
+      213: -5423240622287220802
+    second: HighlightChip_1
+  - first:
+      213: -2730114088491368030
+    second: HighlightChip_2
+  - first:
+      213: -4134827984757407123
+    second: HighlightChip_3
+  - first:
+      213: -7669514908718072108
+    second: HighlightChip_4
+  - first:
+      213: 1419172882191581366
+    second: HighlightChip_5
+  - first:
+      213: -2113147202767578266
+    second: HighlightChip_6
+  - first:
+      213: 7911496807641784263
+    second: HighlightChip_7
+  - first:
+      213: -1057926174353862370
+    second: HighlightChip_8
+  - first:
+      213: 7167302383319011957
+    second: HighlightChip_9
+  - first:
+      213: -8532948299106584023
+    second: HighlightChip_10
+  - first:
+      213: -8233408229176557341
+    second: HighlightChip_11
+  - first:
+      213: 2258223885519625719
+    second: HighlightChip_12
+  - first:
+      213: 4149317423244087720
+    second: HighlightChip_13
+  - first:
+      213: 3754196996651283620
+    second: HighlightChip_14
+  - first:
+      213: 7462462869458650240
+    second: HighlightChip_15
+  - first:
+      213: -7409689554455253956
+    second: HighlightChip_16
+  - first:
+      213: 5861874500317274006
+    second: HighlightChip_17
+  - first:
+      213: 8929238374441481665
+    second: HighlightChip_18
+  - first:
+      213: 7517972810770107620
+    second: HighlightChip_19
+  - first:
+      213: -3867271209923752719
+    second: HighlightChip_20
+  - first:
+      213: 7277066300848459921
+    second: HighlightChip_21
+  - first:
+      213: 6789435071133638390
+    second: HighlightChip_22
+  - first:
+      213: 3050969240741159567
+    second: HighlightChip_23
+  - first:
+      213: 2351719164442776815
+    second: HighlightChip_24
+  - first:
+      213: 6234993875187165324
+    second: HighlightChip_25
+  - first:
+      213: 6510212139617891211
+    second: HighlightChip_26
+  - first:
+      213: 2263234681885753823
+    second: HighlightChip_27
+  - first:
+      213: -1684058789756609477
+    second: HighlightChip_28
+  - first:
+      213: 5078425360003645347
+    second: HighlightChip_29
+  - first:
+      213: 6319279527468326562
+    second: HighlightChip_30
+  - first:
+      213: 564275170282475915
+    second: HighlightChip_31
+  - first:
+      213: 2894235624800417363
+    second: HighlightChip_32
+  - first:
+      213: -8408704790757155259
+    second: HighlightChip_33
+  - first:
+      213: -4870187394842407227
+    second: HighlightChip_34
+  - first:
+      213: -8208266768635680423
+    second: HighlightChip_35
+  - first:
+      213: 7556683862336424256
+    second: HighlightChip_36
+  - first:
+      213: 7691168693525865065
+    second: HighlightChip_37
+  - first:
+      213: -3880454526929818429
+    second: HighlightChip_38
+  - first:
+      213: 2345005762808805317
+    second: HighlightChip_39
+  - first:
+      213: 7291740856904119062
+    second: HighlightChip_40
+  - first:
+      213: -5758532601857421360
+    second: HighlightChip_41
+  - first:
+      213: 2688027338809191181
+    second: HighlightChip_42
+  - first:
+      213: 7793508531678241581
+    second: HighlightChip_43
+  - first:
+      213: -4802390501465298571
+    second: HighlightChip_44
+  - first:
+      213: -9100011712554038710
+    second: HighlightChip_45
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HighlightChip_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a3c36ed3a0cdbe60800000000000000
+      internalID: 7979745924813669285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HighlightChip_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf0a193367ccb4b0800000000000000
+      internalID: -5423240622287220802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HighlightChip_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a1ce2783bfac1ad0800000000000000
+      internalID: -2730114088491368030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HighlightChip_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d62c039ead32e96c0800000000000000
+      internalID: -4134827984757407123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HighlightChip_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4defb4a43d8609590800000000000000
+      internalID: -7669514908718072108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HighlightChip_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b085ed973ae1b310800000000000000
+      internalID: 1419172882191581366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HighlightChip_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b9de4a0d79ca2e0800000000000000
+      internalID: -2113147202767578266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      HighlightChip_0: 7979745924813669285
+      HighlightChip_1: -5423240622287220802
+      HighlightChip_2: -2730114088491368030
+      HighlightChip_3: -4134827984757407123
+      HighlightChip_4: -7669514908718072108
+      HighlightChip_5: 1419172882191581366
+      HighlightChip_6: -2113147202767578266
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -27,8 +27,9 @@ public class SplitterChips : MonoBehaviour
         }
     }
 
-    void SplitRicochet()
+    void SplitRicochet(GameObject enemy)
     {
+        chipScript.onHit -= SplitRicochet;
         if (chipScript.enemyDistances.Count > 0)
         {
             int targetsHit = Mathf.Min(splitAmount, chipScript.enemyDistances.Count - 1);
@@ -45,6 +46,7 @@ public class SplitterChips : MonoBehaviour
                 behaviour.DamageTakenText(chipScript.currentDamage);
                 chipScript.ps.DoLifesteal(chipScript.currentLifesteal);
                 chipScript.DrawEnemyLine(chipScript.enemyDistances[i].enemy.transform.position);
+                chipScript.onHit?.Invoke(chipScript.enemyDistances[i].enemy);
             }
         }
     }

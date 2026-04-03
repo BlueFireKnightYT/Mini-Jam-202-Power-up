@@ -23,19 +23,19 @@ public class TntChip : MonoBehaviour
         }
     }
 
-    void ExplodeOnEnemy()
+    void ExplodeOnEnemy(GameObject enemy)
     {
-        Vector2 enemyLocation = chipScript.enemyDistances[0].enemy.transform.position;
+        Vector2 enemyLocation = enemy.transform.position;
 
         RaycastHit2D[] rayCollider = Physics2D.CircleCastAll(enemyLocation, explosionRadius, Vector2.down, 0f);
         foreach (RaycastHit2D t in rayCollider)
         {
-            if (t.collider.gameObject.CompareTag("enemy") && t.collider.gameObject != chipScript.enemyDistances[0].enemy)
+            if (t.collider.gameObject.CompareTag("enemy") && t.collider.gameObject != enemy)
             {
                 t.collider.gameObject.GetComponent<EnemyBehaviour>().enemyHealth -= (chipScript.currentDamage) / 2;
                 t.collider.gameObject.GetComponent<EnemyBehaviour>().DamageTakenText((chipScript.currentDamage) / 2);
             }
-            chipScript.enemyDistances[0].enemy.GetComponent<ParticleSystem>().Play();
+            enemy.GetComponent<ParticleSystem>().Play();
         }
     }
 }

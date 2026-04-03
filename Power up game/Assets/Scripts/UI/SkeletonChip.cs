@@ -9,13 +9,24 @@ public class SkeletonChip : MonoBehaviour
     {
         chipScript = GetComponent<CoinProjectile>();
         chipAttributes = chipScript.chipAttributes;
-        chipScript.onRicocchet += SpawnBones;
+        chipScript.onRicocchet += SpawnBones2;
         chipScript.onHit += SpawnBones;
     }
 
-    private void SpawnBones()
+    private void SpawnBones(GameObject enemy)
     {
         GameObject bone1 = Instantiate(bonePrefab, transform.position , Quaternion.identity);
+        GameObject bone2 = Instantiate(bonePrefab, transform.position, Quaternion.identity);
+        GameObject bone3 = Instantiate(bonePrefab, transform.position, Quaternion.identity);
+
+        bone1.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 2, ForceMode2D.Impulse);
+        bone2.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+        bone3.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 2, ForceMode2D.Impulse);
+    }
+
+    private void SpawnBones2()
+    {
+        GameObject bone1 = Instantiate(bonePrefab, transform.position, Quaternion.identity);
         GameObject bone2 = Instantiate(bonePrefab, transform.position, Quaternion.identity);
         GameObject bone3 = Instantiate(bonePrefab, transform.position, Quaternion.identity);
 
