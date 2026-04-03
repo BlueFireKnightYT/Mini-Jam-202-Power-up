@@ -173,13 +173,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d018cc9f1833d904d90f3309d88a4a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  ps: {fileID: 0}
   linePrefab: {fileID: 3184512944213095694, guid: 7103d266d149d354286fa3a8a0387ed2, type: 3}
   lineDuration: 0.05
   beenHit: 0
   isLastProjectile: 0
   nextCoin: {fileID: 0}
   closestEnemy: {fileID: 0}
-  chipAttributes: {fileID: 11400000, guid: 8f20f18163e9ca344bbe5bbdcdc82d7d, type: 2}
+  secondClosestEnemy: {fileID: 0}
+  chipAttributes: {fileID: 11400000, guid: e16ea8e17bb3a0044894ed8b507ab624, type: 2}
   currentDamage: 0
   currentLifesteal: 0
 --- !u!198 &1914184928358104566

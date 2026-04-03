@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DragDropChips : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -13,6 +14,8 @@ public class DragDropChips : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public ChipWeapon chipAttributes;
 
+    Image image;
+
     public GameObject currentSlot = null;
 
     public bool isUnlocked = false;
@@ -22,8 +25,10 @@ public class DragDropChips : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         pos = rectTransform.anchoredPosition;
         originalParent = transform.parent;
-        cardsParent = transform.parent;
+        cardsParent = transform.parent.parent.parent.parent.parent;
         player = GameObject.FindGameObjectWithTag("player");
+        image = GetComponent<Image>();
+        image.sprite = chipAttributes.chipSprite;
     }
     private void Awake()
     {

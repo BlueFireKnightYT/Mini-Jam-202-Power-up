@@ -11,6 +11,7 @@ TagManager:
   - coin
   - coinWeapon
   - roulette
+  - enemyProjectile
   layers:
   - Default
   - TransparentFX

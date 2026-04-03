@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     int shotPierceAmount;
     ParticleSystem particles;
     SpriteRenderer sr;
+    Collider2D collider;
     
 
     [Header("Weapon Properties")]
@@ -49,6 +50,7 @@ public class Bullet : MonoBehaviour
         equippedWeapon = playerShooting.weapons[playerShooting.currentWeapon];
         particles = GetComponent<ParticleSystem>();
         sr = GetComponent<SpriteRenderer>();
+        collider = GetComponent<Collider2D>();
         transform.localScale = transform.localScale * sizeMultiplier;
         currentDirecton = transform.up;
         if (equippedWeapon.willDisappear)
@@ -194,6 +196,7 @@ public class Bullet : MonoBehaviour
                 bulletSpeed = 0f;
                 bulletRb.linearVelocity = Vector2.zero;
                 sr.sprite = null;
+                collider.enabled = false;
                 Destroy(this.gameObject, 0.5f);
             }
 

@@ -1,11 +1,18 @@
+using System.Collections.Generic;
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class RouletteWheel : MonoBehaviour, IDropHandler
 {
-    DragDrop dragDrop;
+    DragDropChips dragDrop;
     public GameObject choosePanel;
     public Animator anim;
+    public ChipWeapon[] allChips;
+    public List<GameObject> chipGroups;
+    public GameObject chipsInventory;
+    public GameObject uiChipPrefab;
 
     private void Start()
     {
@@ -16,8 +23,8 @@ public class RouletteWheel : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            dragDrop = eventData.pointerDrag.GetComponent<DragDrop>();
-            if (dragDrop.isChip)
+            dragDrop = eventData.pointerDrag.GetComponent<DragDropChips>();
+            if (dragDrop != null)
             {
                 Destroy(dragDrop.gameObject);
                 choosePanel.SetActive(true);
@@ -48,7 +55,7 @@ public class RouletteWheel : MonoBehaviour, IDropHandler
             anim.SetBool("red", true);
             if(color == 1)
             {
-                print("win");
+                AddRandomChip();
             }
             else
             {
@@ -60,11 +67,32 @@ public class RouletteWheel : MonoBehaviour, IDropHandler
             anim.SetBool("black", true);
             if (color == 2)
             {
-                print("win");
+                AddRandomChip();
             }
             else
             {
                 print("lose");
+            }
+        }
+    }
+
+    private void AddRandomChip()
+    {
+        int chipType = Random.Range(0, allChips.Length);
+        foreach(GameObject group in chipGroups)
+        {
+            if(group.GetComponent<ChipIdentifier>().chipAttributes == null)
+            {
+                GameObject chipUI = Instantiate(uiChipPrefab, group.transform);
+                chipUI.GetComponent<DragDropChips>().chipAttributes = allChips[chipType];
+                group.GetComponent<ChipIdentifier>().chipAttributes = allChips[chipType];
+                return;
+            }
+            else if(group.GetComponent<ChipIdentifier>().chipAttributes == allChips[chipType])
+            {
+                GameObject chipUI = Instantiate(uiChipPrefab, group.transform);
+                chipUI.GetComponent<DragDropChips>().chipAttributes = allChips[chipType];
+                return;
             }
         }
     }

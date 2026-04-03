@@ -380,6 +380,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e3622a58-18c0-41ba-87b2-b85e3de61ace
     m_ActionName: 'Player/ScrollWeapon[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: InventoryEnabler, Assembly-CSharp
+        m_MethodName: ToggleInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 12e43996-5349-4da9-8ff6-1e6cbc8809bf
+    m_ActionName: 'Player/OpenInventory[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6203275148096579636}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 28e07d1b-164b-495d-91e9-556865d8ada7
+    m_ActionName: 'Player/Interact[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -398,10 +430,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   hpSys: {fileID: 3688112732473469382}
+  UIChipPrefab: {fileID: 2620803818485377952, guid: 82216af9fa018ee4aad96a6d61ba685a, type: 3}
+  chipsParent: {fileID: 0}
   baseSpeed: 0
   speed: 5
   weaponRotate: {fileID: 7667207627187913509}
   jokerMenu: {fileID: 0}
+  everyWeapon:
+  - {fileID: 11400000, guid: 787083912cd444c4da70ed0902863971, type: 2}
+  - {fileID: 11400000, guid: c102847ea9c0b084bbda197b1e9e9359, type: 2}
+  - {fileID: 11400000, guid: fb2ad04d0ca2cf545967f352e3f21c0d, type: 2}
+  chipsInventory: {fileID: 0}
+  rouletteStuff: {fileID: 0}
+  chipSlots: {fileID: 0}
+  normalChip: {fileID: 11400000, guid: 8f20f18163e9ca344bbe5bbdcdc82d7d, type: 2}
 --- !u!114 &2310889213408456459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,22 +458,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   hpSys: {fileID: 3688112732473469382}
   lvlSys: {fileID: 7825700251934368570}
-  weaponSprites:
-  - {fileID: 21300000, guid: 031eef16232479c47a3263297fe1f945, type: 3}
-  - {fileID: 21300000, guid: a7741ab7de028e0418b09601d3669cb5, type: 3}
-  projectilePrefabs:
-  - {fileID: 8379585933943714111, guid: 01e38c131271ede41ac7c203f781a991, type: 3}
-  - {fileID: 8659297588210148732, guid: c6fc2b77d8a71a04593f49af5abdef86, type: 3}
+  weapons:
+  - {fileID: 11400000, guid: 787083912cd444c4da70ed0902863971, type: 2}
+  - {fileID: 11400000, guid: c102847ea9c0b084bbda197b1e9e9359, type: 2}
   cooldown: 1
   baseCooldown: 0
   cardPos: {fileID: 4014313607069082508}
   damage: 40
-  baseDamage: 0
+  damageMultiplier: 1
   cardAmount: 1
   baseCardAmount: 0
   pierceAmount: 1
   basePierceAmount: 0
   weaponSprite: {fileID: 1589517468346151322}
+  currentWeapon: 0
+  projectile: {fileID: 0}
+  projectileSizeMultiplier: 1
+  projectileSpeedMultiplier: 1
+  explosiveBullets: 0
+  explosionPrefab: {fileID: 7259478051359913826, guid: 04c261899bab9a44586cd10b5e767592, type: 3}
+  explosionRadius: 0
+  isHoming: 0
+  homingSpeed: 0
+  isBoomerang: 0
+  isChaotic: 0
+  isOrbit: 0
+  chipCount: 0
+  chipWeapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   lastProjectile: {fileID: 0}
 --- !u!95 &1993844278842132305
 Animator:
@@ -487,6 +543,9 @@ MonoBehaviour:
   inPauseMenu: 0
   hpSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
+  invEnabler: {fileID: 0}
+  powerUpActivator: {fileID: 3109790425041623733}
+  inventory: {fileID: 0}
   pauseMenu: {fileID: 0}
 --- !u!114 &7825700251934368570
 MonoBehaviour:
@@ -519,15 +578,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7787d96933eb693489b0a07b60e56585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpActivator
-  powerUpDuration: 5
+  powerUpActive: 0
+  powerUpEnabled: 0
   playerObj: {fileID: 5269077499305534381}
   UIPowered: {fileID: 0}
-  poweredSpeed: 0
-  poweredDamage: 0
-  poweredCooldown: 0
-  realCooldown: 0
-  poweredCardAmount: 0
-  poweredPierceAmount: 0
+  slot1: {fileID: 0}
+  slot2: {fileID: 0}
+  slot3: {fileID: 0}
+  uiCards: {fileID: 0}
 --- !u!70 &8807786308395642323
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -581,7 +639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7119588599128840697
 Transform:
   m_ObjectHideFlags: 0
@@ -609,9 +667,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fad68a75f53244a900f2bbe1e33bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  enemy: {fileID: 8974456285381197933, guid: fcb5002c7d1e6194dae1c91eeae2fc4e, type: 3}
-  shootingEnemy: {fileID: 860412203463663464, guid: edd498c35182a07499e2c47828836700, type: 3}
-  dashingEnemy: {fileID: 3267639721472912695, guid: c8e1682cf1c599e44b9057f5ea0bb706, type: 3}
+  enemyTypes:
+  - {fileID: 8974456285381197933, guid: fcb5002c7d1e6194dae1c91eeae2fc4e, type: 3}
+  - {fileID: 8974456285381197933, guid: fcb5002c7d1e6194dae1c91eeae2fc4e, type: 3}
+  - {fileID: 8974456285381197933, guid: fcb5002c7d1e6194dae1c91eeae2fc4e, type: 3}
+  - {fileID: 860412203463663464, guid: edd498c35182a07499e2c47828836700, type: 3}
+  - {fileID: 3267639721472912695, guid: c8e1682cf1c599e44b9057f5ea0bb706, type: 3}
   baseNeededTime: 5
   cam: {fileID: 0}
 --- !u!1 &8972882340141010562

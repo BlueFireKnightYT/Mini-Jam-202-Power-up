@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
 {
     public HpSystem hpSys;
     LevelSystem lvlSys;
+    PowerUpActivator pUA;
 
     Rigidbody2D rb;
 
@@ -20,7 +21,10 @@ public class Movement : MonoBehaviour
     public GameObject jokerMenu;
     public PlayerWeapon[] everyWeapon;
 
-    public GameObject rouletteMenu;
+    public GameObject chipsInventory;
+    public GameObject rouletteStuff;
+    public GameObject chipSlots;
+    public ChipWeapon normalChip;
 
     InputAction lookAt;
     PlayerInput PlayerInput;
@@ -33,6 +37,7 @@ public class Movement : MonoBehaviour
         PlayerInput = GetComponent<PlayerInput>();
         playerShooting = GetComponent<PlayerShooting>();
         lvlSys = GetComponent<LevelSystem>();
+        pUA = GetComponent<PowerUpActivator>();
         lookAt = PlayerInput.actions.FindAction("LookAt");
         jokerMenu.SetActive(false);
         Time.timeScale = 1;
@@ -57,13 +62,19 @@ public class Movement : MonoBehaviour
     {
         if (inInteractableRange)
         {
-            if (!rouletteMenu.activeSelf)
+            if (!rouletteStuff.activeSelf)
             {
-                rouletteMenu.SetActive(true);
+                rouletteStuff.SetActive(true);
+                chipsInventory.SetActive(true);
+                chipSlots.SetActive(false);
+                Time.timeScale = 0f;
             }
             else
             {
-                rouletteMenu.SetActive(false);
+                rouletteStuff.SetActive(false);
+                chipsInventory.SetActive(false);
+                chipSlots.SetActive(true);
+                Time.timeScale = 1f;
             }
         }
     }
@@ -83,6 +94,7 @@ public class Movement : MonoBehaviour
                 if (weapon.weaponName == "Coin")
                 {
                     GameObject UIChip = Instantiate(UIChipPrefab, chipsParent.transform);
+                    UIChip.GetComponent<DragDropChips>().chipAttributes = normalChip; 
                     Destroy(collision.gameObject);
                 }
             }
@@ -90,6 +102,7 @@ public class Movement : MonoBehaviour
         if(collision.CompareTag("roulette") == true)
         {
             inInteractableRange = true;
+            pUA.powerUpEnabled = false;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -97,7 +110,9 @@ public class Movement : MonoBehaviour
         if (inInteractableRange)
         {
             inInteractableRange = false;
-            rouletteMenu.SetActive(false);
+            rouletteStuff.SetActive(false);
+            chipSlots.SetActive(true);
+            pUA.powerUpEnabled = true;
         }
     }
 }

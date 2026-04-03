@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChipWeapon
   chipName: Skeleton
   chipSprite: {fileID: 21300000, guid: 804b50fc6840ef142833d1c9170b5801, type: 3}
-  damage: 5
+  damage: 10
   lifesteal: 5
   speed: 2
   chipPrefab: {fileID: 7836774772513970317, guid: 8852b47d3514d28429a1b18b2a5781c2, type: 3}

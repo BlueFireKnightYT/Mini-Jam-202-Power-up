@@ -3,11 +3,12 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class CoinProjectile : MonoBehaviour
 {
     Rigidbody2D rb;
-    PlayerShooting ps;
+    public PlayerShooting ps;
     public GameObject linePrefab;
     public float lineDuration = 0.1f;
     public bool beenHit;
@@ -16,7 +17,6 @@ public class CoinProjectile : MonoBehaviour
     float minDistance;
     Vector2 nextCoinPos;
     public GameObject nextCoin;
-    public GameObject closestEnemy;
     GameObject lineObj;
     public ChipWeapon chipAttributes;
     public float currentDamage;
@@ -24,6 +24,7 @@ public class CoinProjectile : MonoBehaviour
 
     public event Action onHit;
     public event Action onRicocchet;
+    public List<(GameObject enemy, float distance)> enemyDistances = new List<(GameObject, float)>();
 
     private void Start()
     {
@@ -71,10 +72,11 @@ public class CoinProjectile : MonoBehaviour
                          float distance = (hit.transform.position - transform.position).sqrMagnitude;
                          if (distance < minDistance)
                          {
-                             minDistance = distance;
-                             nextCoinPos = hit.transform.position;
-                             nextCoin = hit.gameObject;
+                            minDistance = distance;
+                            nextCoinPos = hit.transform.position;
+                            nextCoin = hit.gameObject;
                          }
+                        
                      }    
                 }
             }
@@ -90,23 +92,20 @@ public class CoinProjectile : MonoBehaviour
             minDistance = Mathf.Infinity;
             foreach (Collider2D hit in hits)
             {
-                if (hit.gameObject.CompareTag("enemy") == true)
+                if (hit.gameObject.CompareTag("enemy"))
                 {
                     float distance = (hit.transform.position - transform.position).sqrMagnitude;
-                    if (distance < minDistance)
-                    {
-                        minDistance = distance;
-                        closestEnemy = hit.gameObject;
-                    }
+                    enemyDistances.Add((hit.gameObject, distance));
                 }
             }
-            if(closestEnemy != null)
+            enemyDistances.Sort((a, b) => a.distance.CompareTo(b.distance));
+            if (enemyDistances.Count != 0)
             {
-                EnemyBehaviour behaviour = closestEnemy.GetComponent<EnemyBehaviour>();
+                EnemyBehaviour behaviour = enemyDistances[0].enemy.GetComponent<EnemyBehaviour>();
                 behaviour.enemyHealth -= currentDamage;
                 behaviour.DamageTakenText(currentDamage);
                 ps.DoLifesteal(currentLifesteal);
-                DrawEnemyLine(closestEnemy.transform.position);
+                DrawEnemyLine(enemyDistances[0].enemy.transform.position);
                 onHit?.Invoke();
             }
             Destroy(this.gameObject, lineDuration);
@@ -138,7 +137,7 @@ public class CoinProjectile : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void DrawEnemyLine(Vector3 endPos)
+    public void DrawEnemyLine(Vector3 endPos)
     {
         lineObj = Instantiate(linePrefab);
         LineRenderer lr = lineObj.GetComponent<LineRenderer>();

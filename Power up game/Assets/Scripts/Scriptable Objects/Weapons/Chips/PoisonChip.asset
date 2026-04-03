@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99e60d993bb8874e925148100775a38, type: 3}
+  m_Name: PoisonChip
+  m_EditorClassIdentifier: Assembly-CSharp::ChipWeapon
+  chipName: Poison Chip
+  chipSprite: {fileID: 2792531999647372701, guid: d11b563c015c6b24f93fe06c8fdd2eb4, type: 3}
+  damage: 10
+  lifesteal: 5
+  speed: 2
+  chipPrefab: {fileID: 6395227259868277847, guid: a06dc34d0ffe58b4391152e2de3ac666, type: 3}

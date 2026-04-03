@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -20,6 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool dashing;
     public GameObject damageText;
     bool hasDied;
+    public bool isPoisoned;
     private void Start()
     {
         enemyHealth = enemyBaseHealth;
@@ -28,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         hpSys = playerObj.GetComponent<HpSystem>();
         levelSys = playerObj.GetComponent<LevelSystem>();
-        treasureChance = Random.Range(0, 51);
+        treasureChance = Random.Range(0, 11);
         canMove = true;
     }
     private void Update()
@@ -95,5 +99,15 @@ public class EnemyBehaviour : MonoBehaviour
         GameObject damageTextObj = Instantiate(damageText, canvas.transform);
         TextMeshProUGUI textMesh = damageTextObj.GetComponent<TextMeshProUGUI>();
         textMesh.text = damageTaken.ToString();
+    }
+
+    public IEnumerator PoisonHandler(float poisonDamage)
+    {
+        while (isPoisoned)
+        {
+            enemyHealth -= (poisonDamage);
+            DamageTakenText(poisonDamage);
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

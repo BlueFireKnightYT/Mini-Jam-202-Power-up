@@ -10,6 +10,7 @@ public class SkeletonChip : MonoBehaviour
         chipScript = GetComponent<CoinProjectile>();
         chipAttributes = chipScript.chipAttributes;
         chipScript.onRicocchet += SpawnBones;
+        chipScript.onHit += SpawnBones;
     }
 
     private void SpawnBones()

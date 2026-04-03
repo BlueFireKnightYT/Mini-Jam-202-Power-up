@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChipWeapon
   chipName: Bone
   chipSprite: {fileID: 21300000, guid: 7f9186ad0a049e14aaf9196ad0e53066, type: 3}
-  damage: 5
+  damage: 10
   lifesteal: 0
   speed: 2
   chipPrefab: {fileID: 8659297588210148732, guid: c161580e38aa61b40b03c70874a639c7, type: 3}
