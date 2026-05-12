@@ -281,7 +281,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1769944569433365616, guid: 8efc3a3135c6d0442816750714a9ac03, type: 3}
+  m_Sprite: {fileID: 6452676401602884778, guid: 9c63bc5585427f64cae0ff159b008f6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -314,6 +314,7 @@ MonoBehaviour:
   canMove: 0
   dashing: 0
   damageText: {fileID: 4247277082698299201, guid: e8180cb6abb0eda40b2cc9368daba77f, type: 3}
+  isPoisoned: 0
 --- !u!50 &7685988255319382695
 Rigidbody2D:
   serializedVersion: 5
